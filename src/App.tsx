@@ -1,16 +1,17 @@
 import { FC } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./components";
-import "./App.css";
+import { Home, DefaultLayout } from "./components";
 
 const App: FC = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route Component={Home} path="/" />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route Component={DefaultLayout}>
+                    <Route Component={Home} path="/" />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default App;

@@ -1,9 +1,9 @@
 import { FC, ReactNode } from "react";
 
 interface IButtonProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 export const Button: FC<IButtonProps> = ({ children }) => {
-  return <button>{children}</button>;
+    return <button>{children}</button>;
 };
