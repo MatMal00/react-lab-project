@@ -3,5 +3,5 @@ import { FC } from "react";
 interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
-    return <nav></nav>;
+    return <nav>Navbar</nav>;
 };

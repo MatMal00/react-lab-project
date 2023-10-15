@@ -3,5 +3,5 @@ import { FC } from "react";
 interface IFooterProps {}
 
 export const Footer: FC<IFooterProps> = () => {
-    return <footer></footer>;
+    return <footer>Footer</footer>;
 };

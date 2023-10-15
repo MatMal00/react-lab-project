@@ -1,15 +1,16 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
+import { Outlet } from "react-router-dom";
 import { Footer, Navbar } from "src/components/common";
 
-interface IDefaultLayoutProps {
-    children: ReactNode | ReactNode[];
-}
+interface IDefaultLayoutProps {}
 
-export const DefaultLayout: FC<IDefaultLayoutProps> = ({ children }) => {
+export const DefaultLayout: FC<IDefaultLayoutProps> = () => {
     return (
         <>
             <Navbar />
-            <main>{children}</main>
+            <main>
+                <Outlet />
+            </main>
             <Footer />
         </>
     );
