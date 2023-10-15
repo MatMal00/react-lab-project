@@ -13,13 +13,14 @@
         "noEmit": true,
         "jsx": "react-jsx",
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": "."
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.vite.json" }]
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "."
+    },
+    "include": ["src"],
+    "references": [{ "path": "./tsconfig.vite.json" }]
 }
