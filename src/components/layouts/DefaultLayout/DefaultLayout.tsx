@@ -8,9 +8,7 @@ export const DefaultLayout: FC<IDefaultLayoutProps> = () => {
     return (
         <>
             <Navbar />
-            <main>
-                <Outlet />
-            </main>
+            <Outlet />
             <Footer />
         </>
     );
