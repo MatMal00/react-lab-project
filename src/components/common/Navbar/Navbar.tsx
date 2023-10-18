@@ -1,7 +1,19 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
+import { ROUTE } from "src/constants";
+import styles from "./Navbar.module.scss";
 
 interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
-    return <nav>Navbar</nav>;
+    return (
+        <nav className={styles.navbar}>
+            <h1>Name</h1>
+            <ul>
+                <li>
+                    <Link to={ROUTE.POSTS}>posts</Link>
+                </li>
+            </ul>
+        </nav>
+    );
 };
