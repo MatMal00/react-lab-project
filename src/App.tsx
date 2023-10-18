@@ -8,6 +8,7 @@ const App: FC = () => {
         <BrowserRouter>
             <Routes>
                 <Route Component={DefaultLayout}>
+                    <Route path="*" element={<h2>Not Found</h2>} />
                     <Route Component={Home} path={ROUTE.HOME} />
                     <Route Component={Posts} path={ROUTE.POSTS} />
                 </Route>
