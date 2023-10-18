@@ -31,12 +31,20 @@ body {
     color: $font-color-white;
 }
 
+h1 {
+    font-size: 3.6rem;
+}
+
 ul {
     list-style: none;
 }
 
 p {
     font-size: 1.6rem;
+}
+
+a {
+    cursor: pointer;
 }
 
 li {
