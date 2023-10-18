@@ -1,23 +1,16 @@
 import { FC } from "react";
+import { IPost } from "src/types";
 import { useFetchPosts } from "src/libs";
 import { ActionsHandler } from "src/components";
-import { IPost } from "src/types";
+import { PostsList } from "./components";
 import styles from "./posts.module.scss";
 
 export const Posts: FC = () => {
-    const posts = useFetchPosts();
+    const postsState = useFetchPosts();
 
     return (
         <section className={styles.posts}>
-            <ActionsHandler<IPost[]> {...posts}>
-                {(posts) => (
-                    <ul>
-                        {posts.map((post) => (
-                            <li key={post.id}>{post.title}</li>
-                        ))}
-                    </ul>
-                )}
-            </ActionsHandler>
+            <ActionsHandler<IPost[]> {...postsState}>{(posts) => <PostsList posts={posts} />}</ActionsHandler>
         </section>
     );
 };
