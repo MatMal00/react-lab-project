@@ -1,4 +1,7 @@
+@use "styles/mixins" as *;
+
 .navbar {
+    @include app-container();
     display: flex;
     justify-content: space-around;
 }
