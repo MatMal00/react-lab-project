@@ -1,0 +1,15 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+
+.contentContainer {
+    display: flex;
+}
