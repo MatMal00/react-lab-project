@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { IPost } from "src/types";
-import ManAvatar from "src/images/man-avatar.svg?react";
+import ManAvatar from "icons/man-avatar.svg?react";
+import Comments from "icons/comments.svg?react";
 import styles from "./PostListItem.module.scss";
 
 interface IPostListItemProps extends IPost {}
@@ -17,7 +18,10 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body }) => {
                     <p>{body}</p>
                 </article>
             </div>
-            <button>comments</button>
+            <button className={styles.commentsBtn}>
+                <Comments />
+                <span>comments</span>
+            </button>
         </li>
     );
 };

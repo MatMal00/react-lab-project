@@ -9,6 +9,7 @@ export default defineConfig({
     resolve: {
         alias: {
             styles: "/src/styles",
+            icons: "/src/resources/icons",
         },
     },
 });
