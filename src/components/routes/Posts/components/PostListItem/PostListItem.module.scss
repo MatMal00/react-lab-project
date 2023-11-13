@@ -1,0 +1,49 @@
+@use "styles/colors" as *;
+@use "styles/variables" as *;
+
+.item {
+    display: flex;
+    flex-direction: column;
+    background-color: $black-color;
+    border-radius: $radius;
+}
+
+.contentContainer {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.avatarBox {
+    position: relative;
+    padding: 15px;
+    display: flex;
+    width: 70px;
+    height: 70px;
+    align-self: center;
+    border: 1px solid $white-color;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px $gold-color;
+
+    svg {
+        fill: $gold-color;
+    }
+}
+
+.textBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h5 {
+        text-align: center;
+    }
+
+    h5,
+    p {
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+}

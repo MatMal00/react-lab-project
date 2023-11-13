@@ -28,11 +28,15 @@ body {
         Helvetica Neue,
         sans-serif;
     background-color: $backgroud-color;
-    color: $font-color-white;
+    color: $white-color;
 }
 
 h1 {
     font-size: 3.6rem;
+}
+
+h5 {
+    font-size: 1.8rem;
 }
 
 ul {
@@ -40,7 +44,7 @@ ul {
 }
 
 p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 a {

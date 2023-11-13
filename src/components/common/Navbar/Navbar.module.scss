@@ -1,7 +1,21 @@
 @use "styles/mixins" as *;
+@use "styles/colors" as *;
+@use "styles/variables" as *;
+
+$navbar-height-mobile: 60px;
 
 .navbar {
+    padding-bottom: calc($navbar-height-mobile + $navbar-padding-bottom);
+}
+
+.content {
     @include app-container();
     display: flex;
     justify-content: space-around;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: $black-color;
+    z-index: $zIndex-navbar;
+    // height: $navbar-height-mobile; to do - set proper height when navbar is done
 }

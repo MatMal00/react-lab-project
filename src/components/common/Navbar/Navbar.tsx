@@ -8,15 +8,17 @@ interface INavbarProps {}
 export const Navbar: FC<INavbarProps> = () => {
     return (
         <nav className={styles.navbar}>
-            <h1>
-                <Link to={ROUTE.HOME}>Name</Link>
-            </h1>
+            <div className={styles.content}>
+                <h1>
+                    <Link to={ROUTE.HOME}>Name</Link>
+                </h1>
 
-            <ul>
-                <li>
-                    <Link to={ROUTE.POSTS}>posts</Link>
-                </li>
-            </ul>
+                <ul>
+                    <li>
+                        <Link to={ROUTE.POSTS}>posts</Link>
+                    </li>
+                </ul>
+            </div>
         </nav>
     );
 };
