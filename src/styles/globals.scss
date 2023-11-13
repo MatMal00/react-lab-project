@@ -1,5 +1,6 @@
 @use "variables" as *;
 @use "colors" as *;
+@use "breakpoints" as *;
 
 *,
 *::before,
@@ -32,23 +33,59 @@ body {
 }
 
 h1 {
-    font-size: 3.6rem;
+    font-size: 3rem;
+
+    @include desktop-up() {
+        font-size: 3.2rem;
+    }
+}
+
+h2 {
+    font-size: 2.4rem;
+
+    @include desktop-up() {
+        font-size: 2.6rem;
+    }
+}
+
+h3 {
+    font-size: 2.2rem;
+
+    @include desktop-up() {
+        font-size: 2.4rem;
+    }
+}
+
+h4 {
+    font-size: 2rem;
+
+    @include desktop-up() {
+        font-size: 2.2rem;
+    }
 }
 
 h5 {
     font-size: 1.8rem;
-}
 
-ul {
-    list-style: none;
+    @include desktop-up() {
+        font-size: 2rem;
+    }
 }
 
 p {
     font-size: 1.5rem;
+
+    @include desktop-up() {
+        font-size: 1.6rem;
+    }
 }
 
 a {
     cursor: pointer;
+}
+
+ul {
+    list-style: none;
 }
 
 li {

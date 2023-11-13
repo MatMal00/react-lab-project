@@ -9,7 +9,7 @@ interface IPostListItemProps extends IPost {}
 export const PostListItem: FC<IPostListItemProps> = ({ title, body }) => {
     return (
         <li className={styles.item}>
-            <div className={styles.contentContainer}>
+            <div className={styles.topSection}>
                 <div className={styles.avatarBox}>
                     <ManAvatar />
                 </div>

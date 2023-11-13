@@ -1,22 +1,24 @@
 @use "styles/colors" as *;
 @use "styles/variables" as *;
+@use "styles/breakpoints" as *;
 
 .item {
     display: flex;
     flex-direction: column;
     background-color: $black-color;
     border-radius: $radius;
-    box-shadow: 7px 5px 15px $solid-black-color;
+    box-shadow: 3px 4px 8px $solid-black-color;
 
     svg {
         fill: $gold-color;
     }
 }
 
-.contentContainer {
+.topSection {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     gap: 15px;
 }
 
@@ -35,7 +37,7 @@
 .textBox {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 
     h5 {
         text-align: center;
@@ -70,6 +72,10 @@
     span {
         padding-bottom: 2px;
         font-size: 1.4rem;
+
+        @include desktop-up() {
+            font-size: 1.6rem;
+        }
 
         &::first-letter {
             text-transform: uppercase;

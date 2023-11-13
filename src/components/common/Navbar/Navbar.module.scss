@@ -19,3 +19,7 @@ $navbar-height-mobile: 60px;
     z-index: $zIndex-navbar;
     // height: $navbar-height-mobile; to do - set proper height when navbar is done
 }
+
+div.content {
+    max-width: unset;
+}
