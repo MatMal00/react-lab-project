@@ -1,0 +1,32 @@
+@use "styles/colors" as *;
+@use "styles/variables" as *;
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: $zIndex-overNavbar;
+}
+
+.modalContent {
+    margin: 20% auto;
+    max-width: 500px;
+    background-color: $backgroud-color;
+    padding: 20px;
+    animation: scale 0.5s ease;
+    border-radius: 10px;
+    box-shadow:
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.02),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.03),
+        100px 100px 80px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes scale {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
