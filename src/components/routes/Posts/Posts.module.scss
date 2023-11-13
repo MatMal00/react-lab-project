@@ -1,2 +1,5 @@
+@use "styles/mixins" as *;
+
 .posts {
+    @include app-container();
 }

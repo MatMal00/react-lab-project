@@ -1,0 +1,96 @@
+@use "styles/colors" as *;
+@use "styles/variables" as *;
+@use "styles/breakpoints" as *;
+
+.item {
+    display: flex;
+    flex-direction: column;
+    background-color: $black-color;
+    border-radius: $radius;
+    box-shadow: 3px 4px 8px $solid-black-color;
+
+    svg {
+        fill: $gold-color;
+    }
+}
+
+.topSection {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 15px;
+}
+
+.avatarBox {
+    position: relative;
+    padding: 15px;
+    display: flex;
+    width: 70px;
+    height: 70px;
+    align-self: center;
+    border: 1px solid $white-color;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px $gold-color;
+}
+
+.textBox {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h5 {
+        text-align: center;
+    }
+
+    h5,
+    p {
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    h5 {
+        &::first-letter {
+            color: $gold-color;
+        }
+    }
+}
+
+.commentsBtn {
+    padding: 6px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid transparent;
+    border-top-color: $white-color;
+    border-radius: 0 0 $radius $radius;
+    color: $white-color;
+    transition: border-color 0.3s;
+
+    span {
+        padding-bottom: 2px;
+        font-size: 1.4rem;
+
+        @include desktop-up() {
+            font-size: 1.6rem;
+        }
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+        border-color: $gold-color;
+    }
+}

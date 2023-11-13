@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { IPost } from "src/types";
+import styles from "./PostsList.module.scss";
+import { PostListItem } from "../PostListItem";
 
 interface IPostsListProps {
     posts: IPost[];
@@ -7,9 +9,9 @@ interface IPostsListProps {
 
 export const PostsList: FC<IPostsListProps> = ({ posts }) => {
     return (
-        <ul>
+        <ul className={styles.list}>
             {posts.map((post) => (
-                <li key={post.id}>{post.title}</li>
+                <PostListItem {...post} key={post.id} />
             ))}
         </ul>
     );

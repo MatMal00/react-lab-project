@@ -1,0 +1,15 @@
+@use "breakpoints" as *;
+
+@mixin app-container {
+    margin: 0 auto;
+    padding: 14px;
+
+    @include tablet-portrait-up() {
+        padding: 20px;
+    }
+
+    @include tablet-landscape-up() {
+        padding: 24px;
+        max-width: 1440px;
+    }
+}

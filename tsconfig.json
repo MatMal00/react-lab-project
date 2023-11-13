@@ -22,5 +22,6 @@
         "baseUrl": "."
     },
     "include": ["src"],
-    "references": [{ "path": "./tsconfig.vite.json" }]
+    "references": [{ "path": "./tsconfig.vite.json" }],
+    "types": ["vite-plugin-svgr/client"]
 }

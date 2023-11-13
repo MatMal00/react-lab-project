@@ -1,5 +1,6 @@
 @use "variables" as *;
 @use "colors" as *;
+@use "breakpoints" as *;
 
 *,
 *::before,
@@ -28,31 +29,80 @@ body {
         Helvetica Neue,
         sans-serif;
     background-color: $backgroud-color;
-    color: $font-color-white;
+    color: $white-color;
 }
 
 h1 {
-    font-size: 3.6rem;
+    font-size: 3rem;
+
+    @include desktop-up() {
+        font-size: 3.2rem;
+    }
 }
 
-ul {
-    list-style: none;
+h2 {
+    font-size: 2.4rem;
+
+    @include desktop-up() {
+        font-size: 2.6rem;
+    }
+}
+
+h3 {
+    font-size: 2.2rem;
+
+    @include desktop-up() {
+        font-size: 2.4rem;
+    }
+}
+
+h4 {
+    font-size: 2rem;
+
+    @include desktop-up() {
+        font-size: 2.2rem;
+    }
+}
+
+h5 {
+    font-size: 1.8rem;
+
+    @include desktop-up() {
+        font-size: 2rem;
+    }
 }
 
 p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+
+    @include desktop-up() {
+        font-size: 1.6rem;
+    }
 }
 
 a {
     cursor: pointer;
 }
 
+ul {
+    list-style: none;
+}
+
 li {
     font-size: 2.5rem;
 }
 
-button {
-    font-size: 1.8rem;
-    box-shadow: $shadow;
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    padding: 0;
+    margin: 0;
+    appearance: none;
+    background: none;
+    border: none;
+    font: inherit;
     cursor: pointer;
+    outline: none;
+    box-shadow: none;
 }
