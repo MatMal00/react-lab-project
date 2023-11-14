@@ -1,6 +1,7 @@
 import { FC, MouseEvent, ReactElement } from "react";
 import { UserInfoModal, CommentsModal } from "./components";
 import { Portal } from "../Portal";
+import CrossIcon from "icons/cross.svg?react";
 import cn from "classnames";
 import styles from "./Modal.module.scss";
 
@@ -17,7 +18,7 @@ interface IModalComponent extends FC<IModalProps> {
 }
 
 export const Modal: IModalComponent = ({ isOpen, handleClose, children, className }) => {
-    const handleCloseModal = (e: MouseEvent<HTMLDivElement>) => {
+    const handleCloseModal = (e: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
         e.stopPropagation();
         handleClose();
     };
@@ -27,7 +28,12 @@ export const Modal: IModalComponent = ({ isOpen, handleClose, children, classNam
             {isOpen && (
                 <Portal>
                     <div className={styles.modal} onClick={handleCloseModal}>
-                        <div className={cn(styles.modalContent, className)}>{children}</div>
+                        <div className={cn(styles.modalContent, className)}>
+                            <button className={styles.closeBtn} onClick={handleCloseModal}>
+                                <CrossIcon />
+                            </button>
+                            {children}
+                        </div>
                     </div>
                 </Portal>
             )}
