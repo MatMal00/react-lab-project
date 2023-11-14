@@ -2,7 +2,7 @@
 @use "styles/colors" as *;
 @use "styles/variables" as *;
 
-$navbar-height-mobile: 60px;
+$navbar-height-mobile: 60px; // to do - set proper height when navbar is done
 
 .navbar {
     padding-bottom: calc($navbar-height-mobile + $navbar-padding-bottom);
@@ -17,7 +17,6 @@ $navbar-height-mobile: 60px;
     width: 100%;
     background-color: $black-color;
     z-index: $zIndex-navbar;
-    // height: $navbar-height-mobile; to do - set proper height when navbar is done
 }
 
 div.content {
