@@ -1,0 +1,13 @@
+.commentsModal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    line-height: 1;
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}

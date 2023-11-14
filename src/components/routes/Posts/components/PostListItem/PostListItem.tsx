@@ -22,7 +22,7 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId, id }
                         <ManAvatarIcon />
                     </Avatar>
                     <article className={styles.textBox}>
-                        <h5>{title}</h5>
+                        <h4>{title}</h4>
                         <p>{body}</p>
                     </article>
                 </Card.Body>
@@ -37,7 +37,7 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId, id }
                 <Modal.UserInfo userId={userId} />
             </Modal>
             <Modal handleClose={handleToggleCommentsModal} isOpen={isCommentsModalOpen}>
-                <Modal.Comments postId={id} />
+                <Modal.Comments postTitle={title} postId={id} />
             </Modal>
         </li>
     );
