@@ -38,12 +38,15 @@
     box-sizing: content-box;
     border: 1px solid transparent;
     border-radius: 50%;
-    transition: border-color 0.3s;
+    transition:
+        border-color 0.3s,
+        rotate 0.3s;
 
     &:hover,
     &:focus,
     &:active {
         border-color: $solid-black-color;
+        rotate: 180deg;
     }
 }
 
