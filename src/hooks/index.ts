@@ -1,1 +1,1 @@
-export * from "./useSmth";
+export * from "./usePortal";
