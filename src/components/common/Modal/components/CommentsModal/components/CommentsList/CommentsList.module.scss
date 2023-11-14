@@ -1,4 +1,5 @@
 @use "styles/colors" as *;
+@use "styles/mixins" as *;
 
 .commentsList {
     display: flex;
@@ -15,10 +16,12 @@
     padding: 10px 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 18px;
     width: calc(100% + 40px);
     left: -20px;
     color: $white-color;
     overflow-y: auto;
     max-height: 380px;
+
+    @include styled-scroll-bar();
 }

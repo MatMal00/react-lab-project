@@ -8,13 +8,17 @@ interface ICommentsListProps {
 }
 
 export const CommentsList: FC<ICommentsListProps> = ({ comments }) => {
-    console.log(comments);
+    const noOfComments = comments.length;
+    const commentsTitle = noOfComments === 1 ? "Comment" : "Comments";
+
     return (
         <div className={styles.commentsList}>
-            <h6 className={styles.title}>Comments:</h6>
+            <h6 className={styles.title}>
+                <b>{noOfComments} </b> {commentsTitle}
+            </h6>
             <ul className={styles.list}>
-                {[...comments, ...comments].map((comment) => (
-                    <CommentsListItem {...comment} />
+                {comments.map((comment) => (
+                    <CommentsListItem key={comment.id} {...comment} />
                 ))}
             </ul>
         </div>
