@@ -2,6 +2,7 @@ import { FC, ReactElement, Fragment, useEffect } from "react";
 import { PostSkeleton } from "./PostSkeleton";
 import { useLockScrollY } from "src/hooks";
 import { CommentSkeleton } from "./CommentSkeleton";
+import { UserDetailsSkeleton } from "./UserDetailsSkeleton";
 
 interface ISkeletonProps {
     noOfSkeletons: number;
@@ -11,6 +12,7 @@ interface ISkeletonProps {
 interface ISkeletonElement extends FC<ISkeletonProps> {
     Post: typeof PostSkeleton;
     Comment: typeof CommentSkeleton;
+    UserDetails: typeof UserDetailsSkeleton;
 }
 
 export const Skeleton: ISkeletonElement = ({ noOfSkeletons = 1, children }) => {
@@ -30,3 +32,4 @@ export const Skeleton: ISkeletonElement = ({ noOfSkeletons = 1, children }) => {
 
 Skeleton.Post = PostSkeleton;
 Skeleton.Comment = CommentSkeleton;
+Skeleton.UserDetails = UserDetailsSkeleton;
