@@ -11,7 +11,7 @@ interface IUserInfoModalProps {
 
 export const UserInfoModal: FC<IUserInfoModalProps> = ({ userId }) => {
     const userState = useFetchUserDetails(userId);
-    console.log(userState);
+
     return (
         <div className={styles.userInfoModal}>
             <ActionsHandler<IUser> {...userState}>{(userDetails) => <UserDetails {...userDetails} />}</ActionsHandler>
