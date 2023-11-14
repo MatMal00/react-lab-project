@@ -7,7 +7,7 @@ import styles from "./PostListItem.module.scss";
 
 interface IPostListItemProps extends IPost {}
 
-export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId }) => {
+export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId, id }) => {
     const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false);
     const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
 
@@ -37,7 +37,7 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId }) =>
                 <Modal.UserInfo userId={userId} />
             </Modal>
             <Modal handleClose={handleToggleCommentsModal} isOpen={isCommentsModalOpen}>
-                <Modal.Comments userId={userId} />
+                <Modal.Comments postId={id} />
             </Modal>
         </li>
     );
