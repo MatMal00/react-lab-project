@@ -1,21 +1,24 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { IPost } from "src/types";
-import { Avatar, Card } from "src/components";
+import { Avatar, Card, Modal } from "src/components";
 import ManAvatarIcon from "icons/man-avatar.svg?react";
 import CommentsIcon from "icons/comments.svg?react";
 import styles from "./PostListItem.module.scss";
 
 interface IPostListItemProps extends IPost {}
 
-export const PostListItem: FC<IPostListItemProps> = ({ title, body }) => {
-    // const [isUserInfoPopupOpen, setIsUserInfoPopupOpen] = useState(false);
-    // const [isCommentsPopupOpen, setIsCommentsPopupOpen] = useState(false);
+export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId }) => {
+    const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false);
+    const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
+
+    const handleToggleUserInfoModal = () => setIsUserInfoModalOpen((prev) => !prev);
+    const handleToggleCommentsModal = () => setIsCommentsModalOpen((prev) => !prev);
 
     return (
         <li>
             <Card className={styles.card}>
                 <Card.Body>
-                    <Avatar className={styles.avatar} onClick={() => {}}>
+                    <Avatar className={styles.avatar} onClick={handleToggleCommentsModal}>
                         <ManAvatarIcon />
                     </Avatar>
                     <article className={styles.textBox}>
@@ -24,12 +27,18 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body }) => {
                     </article>
                 </Card.Body>
                 <Card.Footer>
-                    <button className={styles.commentsBtn} onClick={() => {}}>
+                    <button className={styles.commentsBtn} onClick={handleToggleUserInfoModal}>
                         <CommentsIcon />
                         <span>comments</span>
                     </button>
                 </Card.Footer>
             </Card>
+            <Modal handleClose={handleToggleUserInfoModal} isOpen={isUserInfoModalOpen}>
+                <Modal.UserInfo userId={userId} />
+            </Modal>
+            <Modal handleClose={handleToggleCommentsModal} isOpen={isCommentsModalOpen}>
+                <Modal.Comments userId={userId} />
+            </Modal>
         </li>
     );
 };

@@ -1,4 +1,5 @@
 import { FC, MouseEvent, ReactElement } from "react";
+import { UserInfoModal, CommentsModal } from "./components";
 import { Portal } from "../Portal";
 import cn from "classnames";
 import styles from "./Modal.module.scss";
@@ -10,7 +11,12 @@ interface IModalProps {
     className?: string;
 }
 
-export const Modal: FC<IModalProps> = ({ isOpen, handleClose, children, className }) => {
+interface IModalComponent extends FC<IModalProps> {
+    UserInfo: typeof UserInfoModal;
+    Comments: typeof CommentsModal;
+}
+
+export const Modal: IModalComponent = ({ isOpen, handleClose, children, className }) => {
     const handleCloseModal = (e: MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
         handleClose();
@@ -28,3 +34,6 @@ export const Modal: FC<IModalProps> = ({ isOpen, handleClose, children, classNam
         </>
     );
 };
+
+Modal.UserInfo = UserInfoModal;
+Modal.Comments = CommentsModal;
