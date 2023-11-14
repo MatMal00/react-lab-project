@@ -22,16 +22,8 @@
     gap: 15px;
 }
 
-.avatarBox {
-    position: relative;
-    padding: 15px;
-    display: flex;
-    width: 70px;
-    height: 70px;
+.avatar {
     align-self: center;
-    border: 1px solid $white-color;
-    border-radius: 50%;
-    box-shadow: 1px 1px 5px $gold-color;
 }
 
 .textBox {
