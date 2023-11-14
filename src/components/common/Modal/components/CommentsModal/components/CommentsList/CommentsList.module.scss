@@ -24,4 +24,8 @@
     max-height: 380px;
 
     @include styled-scroll-bar();
+
+    &Skeleton {
+        overflow-y: hidden;
+    }
 }
