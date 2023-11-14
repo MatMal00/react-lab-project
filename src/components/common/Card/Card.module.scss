@@ -1,0 +1,11 @@
+@use "styles/colors" as *;
+@use "styles/variables" as *;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: $black-color;
+    border-radius: $radius;
+    box-shadow: 3px 4px 8px $solid-black-color;
+}

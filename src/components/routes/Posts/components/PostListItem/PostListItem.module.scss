@@ -2,24 +2,10 @@
 @use "styles/variables" as *;
 @use "styles/breakpoints" as *;
 
-.item {
-    display: flex;
-    flex-direction: column;
-    background-color: $black-color;
-    border-radius: $radius;
-    box-shadow: 3px 4px 8px $solid-black-color;
-
+.card {
     svg {
         fill: $gold-color;
     }
-}
-
-.topSection {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    gap: 15px;
 }
 
 .avatar {
@@ -54,6 +40,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     gap: 8px;
     border-top: 1px solid transparent;
     border-top-color: $white-color;
