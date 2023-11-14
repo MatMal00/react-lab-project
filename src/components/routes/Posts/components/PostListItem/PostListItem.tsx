@@ -12,7 +12,7 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body }) => {
         <li>
             <Card className={styles.card}>
                 <Card.Body>
-                    <Avatar className={styles.avatar}>
+                    <Avatar className={styles.avatar} onClick={() => {}}>
                         <ManAvatar />
                     </Avatar>
                     <article className={styles.textBox}>
@@ -21,7 +21,7 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body }) => {
                     </article>
                 </Card.Body>
                 <Card.Footer>
-                    <button className={styles.commentsBtn}>
+                    <button className={styles.commentsBtn} onClick={() => {}}>
                         <Comments />
                         <span>comments</span>
                     </button>

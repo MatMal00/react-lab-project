@@ -1,4 +1,5 @@
 @use "breakpoints" as *;
+@use "variables" as *;
 
 @mixin app-container {
     margin: 0 auto;
@@ -11,5 +12,15 @@
     @include tablet-landscape-up() {
         padding: 24px;
         max-width: 1440px;
+    }
+}
+
+@mixin scaleOnAction() {
+    transition: transform $transition-duration;
+
+    &:hover,
+    &:focus,
+    &:active {
+        transform: scale(1.05);
     }
 }
