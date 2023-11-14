@@ -1,15 +1,15 @@
 @use "styles/colors" as *;
 @use "styles/variables" as *;
 
-.modal {
+.modalBackdrop {
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.2);
-    z-index: $zIndex-overNavbar;
+    z-index: $zIndex-backdrop;
 }
 
 .modalContent {
-    position: relative;
+    position: fixed;
     padding: 25px 30px;
     left: 50%;
     top: 50%;
@@ -25,6 +25,7 @@
         100px 100px 80px rgba(0, 0, 0, 0.05);
     color: $black-color;
     animation: scale 0.5s ease;
+    z-index: $zIndex-modal;
 }
 
 .closeBtn {
@@ -35,6 +36,15 @@
     width: 20px;
     height: 20px;
     box-sizing: content-box;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: $solid-black-color;
+    }
 }
 
 @keyframes scale {

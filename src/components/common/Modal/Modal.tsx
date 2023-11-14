@@ -35,14 +35,15 @@ export const Modal: IModalComponent = ({ isOpen, handleClose, children, classNam
         <>
             {isOpen && (
                 <Portal>
-                    <div className={styles.modal} onClick={handleCloseModal}>
+                    <>
+                        <div className={styles.modalBackdrop} onClick={handleCloseModal} />
                         <div className={cn(styles.modalContent, className)}>
                             <button className={styles.closeBtn} onClick={handleCloseModal}>
                                 <CrossIcon />
                             </button>
                             {children}
                         </div>
-                    </div>
+                    </>
                 </Portal>
             )}
         </>
