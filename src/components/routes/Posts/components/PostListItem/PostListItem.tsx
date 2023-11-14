@@ -18,7 +18,7 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId, id }
         <li>
             <Card className={styles.card}>
                 <Card.Body>
-                    <Avatar className={styles.avatar} onClick={handleToggleCommentsModal}>
+                    <Avatar className={styles.avatar} onClick={handleToggleUserInfoModal}>
                         <ManAvatarIcon />
                     </Avatar>
                     <article className={styles.textBox}>
@@ -27,7 +27,7 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId, id }
                     </article>
                 </Card.Body>
                 <Card.Footer>
-                    <button className={styles.commentsBtn} onClick={handleToggleUserInfoModal}>
+                    <button className={styles.commentsBtn} onClick={handleToggleCommentsModal}>
                         <CommentsIcon />
                         <span>comments</span>
                     </button>
