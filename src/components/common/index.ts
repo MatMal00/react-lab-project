@@ -5,3 +5,4 @@ export * from "./ActionsHandler";
 export * from "./Modal";
 export * from "./Avatar";
 export * from "./Card";
+export * from "./Portal";

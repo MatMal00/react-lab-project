@@ -8,6 +8,9 @@ import styles from "./PostListItem.module.scss";
 interface IPostListItemProps extends IPost {}
 
 export const PostListItem: FC<IPostListItemProps> = ({ title, body }) => {
+    // const [isUserInfoPopupOpen, setIsUserInfoPopupOpen] = useState(false);
+    // const [isCommentsPopupOpen, setIsCommentsPopupOpen] = useState(false);
+
     return (
         <li>
             <Card className={styles.card}>
