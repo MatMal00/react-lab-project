@@ -1,5 +1,5 @@
-$skeleton-background-color: #eeeeee;
-$skeleton-highlight-color: #dedede;
+$skeleton-background-color: #949494;
+$skeleton-highlight-color: #808080;
 
 
 .avatarSkeleton {
@@ -12,7 +12,6 @@ $skeleton-highlight-color: #dedede;
     background-size: 200% 100%;
     animation: loading 2s infinite ease-in-out;
     border-radius: 50%;
-    margin-bottom: 20px;
 }
 
 .titleSkeleton {
@@ -25,7 +24,6 @@ $skeleton-highlight-color: #dedede;
     background-size: 200% 100%;
     animation: loading 2s infinite ease-in-out;
     border-radius: 8px;
-    margin-bottom: 20px;
 }
 
 .contentAreaSkeleton {
@@ -38,7 +36,6 @@ $skeleton-highlight-color: #dedede;
     background-size: 200% 100%;
     animation: loading 2s infinite ease-in-out;
     border-radius: 8px;
-    margin-bottom: 20px;
 }
 
 @keyframes loading {

@@ -1,9 +1,10 @@
-import { FC, ReactElement, Fragment } from "react";
+import { FC, ReactElement, Fragment, useEffect } from "react";
 import { PostSkeleton } from "./PostSkeleton";
+import { useLockScrollY } from "src/hooks";
 
 interface ISkeletonProps {
     noOfSkeletons: number;
-    children?: ReactElement;
+    children: ReactElement;
 }
 
 interface ISkeletonElement extends FC<ISkeletonProps> {
@@ -11,9 +12,16 @@ interface ISkeletonElement extends FC<ISkeletonProps> {
 }
 
 export const Skeleton: ISkeletonElement = ({ noOfSkeletons = 1, children }) => {
+    const { lock, unlock } = useLockScrollY();
+
     const skeletonArray = Array.from({ length: noOfSkeletons }, (_, index) => (
         <Fragment key={index}>{children}</Fragment>
     ));
+
+    useEffect(() => {
+        lock();
+        return () => unlock();
+    }, [lock, unlock]);
 
     return <>{skeletonArray}</>;
 };

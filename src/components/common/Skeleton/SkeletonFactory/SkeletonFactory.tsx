@@ -1,5 +1,5 @@
 import { CSSProperties, FC } from "react";
-import styles from "./Skeleton.module.scss";
+import styles from "./SkeletonFactory.module.scss";
 
 interface ISkeletonElementProps {
     width: CSSProperties["width"];
