@@ -1,9 +1,10 @@
-import { FC, MouseEvent, ReactElement } from "react";
+import { FC, MouseEvent, ReactElement, useEffect } from "react";
 import { UserInfoModal, CommentsModal } from "./components";
 import { Portal } from "../Portal";
 import CrossIcon from "icons/cross.svg?react";
 import cn from "classnames";
 import styles from "./Modal.module.scss";
+import { useLockScrollY } from "src/hooks";
 
 interface IModalProps {
     isOpen: boolean;
@@ -18,10 +19,17 @@ interface IModalComponent extends FC<IModalProps> {
 }
 
 export const Modal: IModalComponent = ({ isOpen, handleClose, children, className }) => {
+    const { lock, unlock } = useLockScrollY();
+
     const handleCloseModal = (e: MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
         e.stopPropagation();
         handleClose();
     };
+
+    useEffect(() => {
+        if (isOpen) lock();
+        if (!isOpen) unlock();
+    }, [lock, unlock, isOpen]);
 
     return (
         <>
