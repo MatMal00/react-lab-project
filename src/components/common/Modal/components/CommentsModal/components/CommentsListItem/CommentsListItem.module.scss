@@ -1,6 +1,10 @@
 @use "styles/colors" as *;
 
 .commentListItem {
+    h6 {
+        word-wrap: break-word;
+    }
+    
     p {
         &::first-letter {
             color: $gold-color;
