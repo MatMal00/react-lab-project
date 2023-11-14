@@ -4,6 +4,7 @@ export interface IUser {
     username: string;
     email: string;
     address: IUserAddress;
+    company: IUserCompany;
 }
 
 export interface IUserAddress {
@@ -15,4 +16,10 @@ export interface IUserAddress {
         lat: string;
         lng: string;
     };
+}
+
+export interface IUserCompany {
+    bs: string;
+    catchPhrase: string;
+    name: string;
 }

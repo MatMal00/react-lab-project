@@ -1,0 +1,50 @@
+@use "styles/colors" as *;
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.headingContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+div.avatar {
+    border-color: $solid-black-color;
+    box-sizing: content-box;
+
+    & {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+h4 {
+    text-align: center;
+}
+
+thead {
+    th {
+        padding-bottom: 15px;
+        font-size: 1.8rem;
+    }
+}
+
+tbody {
+    tr {
+        font-size: 1.6rem;
+
+        td {
+            &:first-child {
+                font-weight: bold;
+
+                &::first-letter {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
