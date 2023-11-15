@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IUser } from "src/types";
-import { Avatar, Skeleton } from "src/components/common";
+import { Avatar } from "src/components/common";
 import ManAvatarIcon from "icons/man-avatar.svg?react";
 import styles from "./UserDetails.module.scss";
 
@@ -46,14 +46,6 @@ export const UserDetails: FC<IUserDetailsProps> = ({
                     </tr>
                 </tbody>
             </table>
-        </div>
-    );
-};
-
-export const UserDetailsSkeleton = () => {
-    return (
-        <div className={styles.userDetails}>
-            <Skeleton.UserDetails />
         </div>
     );
 };

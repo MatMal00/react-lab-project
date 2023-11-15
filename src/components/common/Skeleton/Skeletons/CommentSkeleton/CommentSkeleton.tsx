@@ -9,7 +9,7 @@ interface ICommentSkeletonProps {
 
 export const CommentSkeleton: FC<ICommentSkeletonProps> = ({ noOfSkeletons = 1 }) => {
     return (
-        <div className={styles.commentsList}>
+        <div className={styles.commentsListSkeleton}>
             <SkeletonFactory.Title width={"100%"} height={"27px"} />
             <ul className={styles.list}>
                 <SkeletonFactory noOfSkeletons={noOfSkeletons}>

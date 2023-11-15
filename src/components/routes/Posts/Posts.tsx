@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { IPost } from "src/types";
 import { useFetchPosts } from "src/libs";
-import { ActionsHandler } from "src/components";
-import { PostsList, PostsSkeletonList } from "./components";
+import { ActionsHandler, Skeleton } from "src/components";
+import { PostsList } from "./components";
 import styles from "./posts.module.scss";
 
 // const dummyData: IPost[] = [
@@ -43,7 +43,7 @@ export const Posts: FC = () => {
 
     return (
         <section className={styles.posts}>
-            <ActionsHandler<IPost[]> {...postsState} skeleton={<PostsSkeletonList />}>
+            <ActionsHandler<IPost[]> {...postsState} skeleton={<Skeleton.Post noOfSkeletons={9} />}>
                 {(posts) => <PostsList posts={posts} />}
             </ActionsHandler>
         </section>
