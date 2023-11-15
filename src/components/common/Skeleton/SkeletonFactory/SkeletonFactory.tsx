@@ -1,5 +1,4 @@
-import { CSSProperties, FC, Fragment, ReactElement, useEffect } from "react";
-import { useLockScrollY } from "src/hooks";
+import { CSSProperties, FC, Fragment, ReactElement } from "react";
 import styles from "./SkeletonFactory.module.scss";
 
 interface ISkeletonElementProps {
@@ -20,16 +19,9 @@ interface ISkeletonFactoryElement extends FC<ISkeletonFactoryProps> {
 }
 
 export const SkeletonFactory: ISkeletonFactoryElement = ({ children, noOfSkeletons }) => {
-    const { lock, unlock } = useLockScrollY();
-
     const skeletonArray = Array.from({ length: noOfSkeletons }, (_, index) => (
         <Fragment key={index}>{children}</Fragment>
     ));
-
-    useEffect(() => {
-        lock();
-        return () => unlock();
-    }, [lock, unlock]);
 
     return <>{skeletonArray}</>;
 };
