@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { useFetchComments } from "src/libs";
-import { ActionsHandler } from "src/components";
+import { ActionsHandler, Skeleton } from "src/components";
 import { IComment } from "src/types";
-import { CommentsList, CommentsListSkeleton } from "./components";
+import { CommentsList } from "./components";
 import styles from "./CommentsModal.module.scss";
 
 interface ICommentsModalProps {
@@ -17,7 +17,7 @@ export const CommentsModal: FC<ICommentsModalProps> = ({ postTitle, postId }) =>
         <div className={styles.commentsModal}>
             <h5 className={styles.title}>{postTitle}</h5>
 
-            <ActionsHandler<IComment[]> {...commentsState} skeleton={<CommentsListSkeleton />}>
+            <ActionsHandler<IComment[]> {...commentsState} skeleton={<Skeleton.Comment noOfSkeletons={3} />}>
                 {(comments) => <CommentsList comments={comments} />}
             </ActionsHandler>
         </div>

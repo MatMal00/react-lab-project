@@ -1,4 +1,5 @@
-import { CSSProperties, FC } from "react";
+import { CSSProperties, FC, Fragment, ReactElement, useEffect } from "react";
+import { useLockScrollY } from "src/hooks";
 import styles from "./SkeletonFactory.module.scss";
 
 interface ISkeletonElementProps {
@@ -7,7 +8,10 @@ interface ISkeletonElementProps {
     inlineStyles?: CSSProperties;
 }
 
-interface ISkeletonFactoryProps {}
+interface ISkeletonFactoryProps {
+    noOfSkeletons: number;
+    children: ReactElement;
+}
 
 interface ISkeletonFactoryElement extends FC<ISkeletonFactoryProps> {
     ContentArea: typeof ContentAreaSkeleton;
@@ -15,8 +19,19 @@ interface ISkeletonFactoryElement extends FC<ISkeletonFactoryProps> {
     Title: typeof TitleSkeleton;
 }
 
-export const SkeletonFactory: ISkeletonFactoryElement = () => {
-    return null;
+export const SkeletonFactory: ISkeletonFactoryElement = ({ children, noOfSkeletons }) => {
+    const { lock, unlock } = useLockScrollY();
+
+    const skeletonArray = Array.from({ length: noOfSkeletons }, (_, index) => (
+        <Fragment key={index}>{children}</Fragment>
+    ));
+
+    useEffect(() => {
+        lock();
+        return () => unlock();
+    }, [lock, unlock]);
+
+    return <>{skeletonArray}</>;
 };
 
 const AvatarSkeleton: FC<ISkeletonElementProps> = ({ width, height, inlineStyles }) => (

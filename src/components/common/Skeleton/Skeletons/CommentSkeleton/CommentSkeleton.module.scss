@@ -1,0 +1,17 @@
+.commentsList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list {
+    position: relative;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: calc(100% + 40px);
+    left: -20px;
+    max-height: 380px;
+    overflow-y: hidden;
+}

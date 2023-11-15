@@ -6,7 +6,7 @@ export const fetcher = async <T>(url: string) => {
         await new Promise<void>((resolve) => {
             setTimeout(() => {
                 resolve();
-            }, 1000);
+            }, 1500);
         }); // fix me - remove delay
         const response = await api().get<T>(url);
 
