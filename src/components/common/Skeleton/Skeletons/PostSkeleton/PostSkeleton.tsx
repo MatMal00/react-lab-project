@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Card } from "src/components/common";
 import { SkeletonFactory } from "../../SkeletonFactory";
-import styles from "./PostSkeleton.module.scss";
 
 interface IPostSkeletonProps {
     noOfSkeletons?: number;
@@ -9,7 +8,7 @@ interface IPostSkeletonProps {
 
 export const PostSkeleton: FC<IPostSkeletonProps> = ({ noOfSkeletons = 1 }) => {
     return (
-        <ul className={styles.postListSkeleton}>
+        <Card.GridContainer>
             <SkeletonFactory noOfSkeletons={noOfSkeletons}>
                 <Card>
                     <Card.Body>
@@ -20,6 +19,6 @@ export const PostSkeleton: FC<IPostSkeletonProps> = ({ noOfSkeletons = 1 }) => {
                     </Card.Body>
                 </Card>
             </SkeletonFactory>
-        </ul>
+        </Card.GridContainer>
     );
 };

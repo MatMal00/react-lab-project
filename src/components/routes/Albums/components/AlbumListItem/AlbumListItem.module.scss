@@ -1,0 +1,36 @@
+@use "styles/colors" as *;
+
+a {
+    &:hover > .card,
+    &:focus > .card,
+    &:active > .card {
+        scale: 0.98;
+    }
+}
+
+.card {
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: scale 0.3s;
+
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        color: $white-color;
+
+        h2 {
+            text-align: center;
+
+            &::first-letter {
+                color: $gold-color;
+                text-transform: uppercase;
+            }
+        }
+
+        svg {
+            height: 250px;
+        }
+    }
+}

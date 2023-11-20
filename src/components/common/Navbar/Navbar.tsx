@@ -13,9 +13,12 @@ export const Navbar: FC<INavbarProps> = () => {
                     <Link to={ROUTE.HOME}>Name</Link>
                 </h1>
 
-                <ul>
+                <ul style={{ display: "flex", gap: 10 }}>
                     <li>
                         <Link to={ROUTE.POSTS}>posts</Link>
+                    </li>
+                    <li>
+                        <Link to={ROUTE.ALBUMS}>albums</Link>
                     </li>
                 </ul>
             </div>
