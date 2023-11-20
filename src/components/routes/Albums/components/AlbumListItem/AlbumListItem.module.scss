@@ -1,0 +1,33 @@
+@use "styles/colors" as *;
+
+.card {
+    position: relative;
+    overflow: hidden;
+    transition: scale 0.3s;
+
+    &:hover {
+        scale: 0.98;
+    }
+
+    article {
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: $white-color;
+
+        h2 {
+            padding: 15px;
+            text-align: center;
+
+            &::first-letter {
+                color: $gold-color;
+                text-transform: uppercase;
+            }
+        }
+
+        svg {
+            height: 250px;
+        }
+    }
+}
