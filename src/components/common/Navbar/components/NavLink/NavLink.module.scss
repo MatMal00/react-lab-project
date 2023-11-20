@@ -1,0 +1,19 @@
+@use "styles/mixins" as *;
+@use "styles/colors" as *;
+@use "styles/variables" as *;
+
+.link {
+    text-decoration: none;
+    color: white;
+    padding: 5px 25px;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        color: $gold-color;
+    }
+}
+
+.linkActive {
+    color: $gold-color;
+}

@@ -3,17 +3,12 @@ import { Link } from "react-router-dom";
 import { ROUTE } from "src/constants";
 import styles from "./Navbar.module.scss";
 import AppLogoIcon from "icons/app-logo.svg?react";
+import { NavLink } from "./components/NavLink";
 
 interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
-    const [activeLink, setActiveLink] = useState(null);
-
-    const handleNavClick = (e) => {
-        const linkName = e.target.getAttribute("data-name");
-
-        setActiveLink(linkName);
-    };
+    const [activeLink, setActiveLink] = useState("");
 
     return (
         <nav className={styles.navbar}>
@@ -24,34 +19,29 @@ export const Navbar: FC<INavbarProps> = () => {
                     </Link>
                 </h1>
 
-                <ul className={styles.link} style={{ display: "flex", gap: 10 }} onClick={handleNavClick}>
-                    <li>
-                        <Link
-                            data-name="home"
-                            className={`${styles.link} ${activeLink === "home" ? styles.linkActive : ""}`}
-                            to={ROUTE.HOME}
-                        >
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            data-name="posts"
-                            className={`${styles.link} ${activeLink === "posts" ? styles.linkActive : ""}`}
-                            to={ROUTE.POSTS}
-                        >
-                            Posts
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            data-name="albums"
-                            className={`${styles.link} ${activeLink === "albums" ? styles.linkActive : ""}`}
-                            to={ROUTE.ALBUMS}
-                        >
-                            Albums
-                        </Link>
-                    </li>
+                <ul className={styles.link} style={{ display: "flex", gap: 10 }}>
+                    <NavLink
+                        dataName={"home"}
+                        activeLink={activeLink}
+                        to={ROUTE.HOME}
+                        children={"Home"}
+                        setActiveLink={setActiveLink}
+                    ></NavLink>
+                    <NavLink
+                        dataName={"posts"}
+                        activeLink={activeLink}
+                        to={ROUTE.POSTS}
+                        children={"Posts"}
+                        setActiveLink={setActiveLink}
+                    ></NavLink>
+                    <NavLink
+                        dataName={"albums"}
+                        activeLink={activeLink}
+                        to={ROUTE.ALBUMS}
+                        children={"Albums"}
+                        setActiveLink={setActiveLink}
+                    ></NavLink>
+
                     <li>
                         <Link data-name="login" className={styles.loginBtn} to={ROUTE.LOGIN}>
                             Sign In
