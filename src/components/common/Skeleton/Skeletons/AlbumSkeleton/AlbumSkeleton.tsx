@@ -13,7 +13,7 @@ export const AlbumSkeleton: FC<IAlbumSkeletonProps> = ({ noOfSkeletons = 1 }) =>
             <SkeletonFactory noOfSkeletons={noOfSkeletons}>
                 <Card className={styles.albumSkeleton}>
                     <Card.Heading>
-                        <SkeletonFactory.Title width={"100%"} height={30} />
+                        <SkeletonFactory.Title width={"100%"} height={"30px"} />
                         <SkeletonFactory.ContentArea width={"100%"} height={"250px"} />
                     </Card.Heading>
                 </Card>
