@@ -6,13 +6,15 @@ $navbar-height-mobile: 60px; // to do - set proper height when navbar is done
 
 .navbar {
     padding-bottom: calc($navbar-height-mobile + $navbar-padding-bottom);
+    font-family: "Poppins", sans-serif;
 }
 
 .content {
     @include app-container();
+    position: fixed;
     display: flex;
     justify-content: space-around;
-    position: fixed;
+    align-items: center;
     top: 0;
     width: 100%;
     background-color: $black-color;
@@ -21,4 +23,35 @@ $navbar-height-mobile: 60px; // to do - set proper height when navbar is done
 
 div.content {
     max-width: unset;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    padding: 5px 25px;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        color: $gold-color;
+    }
+}
+
+.linkActive {
+    color: $gold-color;
+}
+
+.loginBtn {
+    text-decoration: none;
+    border-radius: 50px;
+    background-color: $gold-color;
+    color: $white-color;
+    padding: 5px 25px;
+    transition: 0.3s;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($gold-color, 10%);
+    }
 }
