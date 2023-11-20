@@ -1,5 +1,5 @@
 import { FC, ReactElement } from "react";
-import { CardBody, CardFooter, CardHeading } from "./components";
+import { CardBody, CardFooter, CardHeading, CardGridContainer } from "./components";
 import cn from "classnames";
 import styles from "./Card.module.scss";
 
@@ -10,6 +10,7 @@ interface ICardProps {
 }
 
 interface ICardComponent extends FC<ICardProps> {
+    GridContainer: typeof CardGridContainer;
     Heading: typeof CardHeading;
     Body: typeof CardBody;
     Footer: typeof CardFooter;
@@ -27,6 +28,7 @@ export const Card: ICardComponent = ({ className, children, theme = "primary" })
     );
 };
 
+Card.GridContainer = CardGridContainer;
 Card.Heading = CardHeading;
 Card.Body = CardBody;
 Card.Footer = CardFooter;
