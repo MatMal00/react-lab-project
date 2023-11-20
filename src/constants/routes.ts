@@ -3,4 +3,5 @@ export const ROUTE = {
     POSTS: "/posts",
     ALBUMS: "/albums",
     PHOTOS: "/photos",
+    LOGIN: "/login",
 } as const;
