@@ -1,7 +1,9 @@
+![makeitmeme_4sMqZ](https://github.com/MatMal00/react-lab-project/assets/101005328/fcdbd667-e1a5-40a2-a473-a1ef071882aa)
+
+
 # React + TypeScript + Vite
 
 # API PROJECT DOCKS: - [@project/json-placeholder-api-docks](https://jsonplaceholder.typicode.com/?fbclid=IwAR0XNdBaY2E1Xdw3N6I5T-8M78I_z-oU_Avykzskb6TDtRpA048dmEJEfLY)
-![makeitmeme_4sMqZ](https://github.com/MatMal00/react-lab-project/assets/101005328/fcdbd667-e1a5-40a2-a473-a1ef071882aa)
 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
