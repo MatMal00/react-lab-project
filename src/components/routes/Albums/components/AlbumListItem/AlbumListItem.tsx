@@ -11,7 +11,7 @@ interface IAlbumListItemProps extends IAlbum {}
 export const AlbumListItem: FC<IAlbumListItemProps> = ({ title, id }) => {
     return (
         <li>
-            <Link to={`${ROUTE.PHOTOS}?albumId=${id}`}>
+            <Link to={`${ROUTE.ALBUMS}/${id}`}>
                 <Card className={styles.card}>
                     <Card.Heading>
                         <h2>{title}</h2>
