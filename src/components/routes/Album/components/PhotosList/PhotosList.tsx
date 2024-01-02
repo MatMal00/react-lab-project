@@ -9,10 +9,10 @@ interface IPhotosListProps {
 
 export const PhotosList: FC<IPhotosListProps> = ({ photos }) => {
     return (
-        <div className={styles.photosList}>
+        <ul className={styles.photosList}>
             {photos.map((photo) => (
-                <PhotoListItem {...photo} />
+                <PhotoListItem key={photo.id} {...photo} />
             ))}
-        </div>
+        </ul>
     );
 };
