@@ -3,7 +3,7 @@
 @use "styles/variables" as *;
 @use "styles/breakpoints" as *;
 
-$navbar-height-mobile: 60px; // to do - set proper height when navbar is done
+$navbar-height-mobile: 60px;
 
 .navbar {
     padding-bottom: calc($navbar-height-mobile + $navbar-padding-bottom);
@@ -11,11 +11,11 @@ $navbar-height-mobile: 60px; // to do - set proper height when navbar is done
 }
 
 .content {
-    @include app-container();
     position: fixed;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding: 10px;
     top: 0;
     width: 100%;
     background-color: $black-color;
@@ -26,10 +26,10 @@ div.content {
     max-width: unset;
 }
 
-.link,
+.links,
 .logoLink {
     text-decoration: none;
-    color: white;
+    color: $white-color;
     padding: 5px 25px;
     transition: 0.3s;
     cursor: pointer;
@@ -42,7 +42,6 @@ div.content {
     color: $white-color;
     padding: 5px 25px;
     transition: 0.3s;
-    color: white;
     cursor: pointer;
 
     &:hover {
@@ -56,7 +55,7 @@ div.content {
     &Line {
         width: 30px;
         height: 4px;
-        background-color: #fff;
+        background-color: $backgroud-color;
         margin: 5px;
         border-radius: 20px;
         transition: 0.4s;
@@ -75,7 +74,7 @@ div.content {
     }
 }
 
-.link {
+.links {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -94,13 +93,35 @@ div.content {
     }
 }
 
-@include phone-only {
-    .list {
-        display: flex;
-        justify-content: center;
-        padding: 15px;
-    }
+.list {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
 }
 
-// @include tablet-portrait-up {
-// }
+@include tablet-narrow-up {
+    .links {
+        flex-direction: row;
+        justify-content: flex-start;
+        position: static;
+        height: auto;
+        min-width: auto;
+        color: inherit;
+        background-color: transparent;
+        transform: none;
+        transition: none;
+
+        &Open {
+            transform: none;
+        }
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .list {
+        display: block;
+        padding: 10px;
+    }
+}
