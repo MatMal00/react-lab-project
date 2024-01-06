@@ -24,7 +24,7 @@ export const Navbar: FC<INavbarProps> = () => {
                     </Link>
                 </h1>
 
-                <ul className={navbarOpen ? `${styles.link} ${styles.linkOpen}` : styles.link}>
+                <ul className={`${styles.links} ${navbarOpen ? styles.linksOpen : ""}`}>
                     <NavLink
                         dataName={"home"}
                         activeLink={activeLink}
@@ -55,21 +55,9 @@ export const Navbar: FC<INavbarProps> = () => {
                 </ul>
 
                 <div className={styles.hamburger} onClick={openNavbar}>
-                    <div
-                        className={
-                            navbarOpen ? `${styles.hamburgerLine} ${styles.hamburgerLineOpen}` : styles.hamburgerLine
-                        }
-                    ></div>
-                    <div
-                        className={
-                            navbarOpen ? `${styles.hamburgerLine} ${styles.hamburgerLineOpen}` : styles.hamburgerLine
-                        }
-                    ></div>
-                    <div
-                        className={
-                            navbarOpen ? `${styles.hamburgerLine} ${styles.hamburgerLineOpen}` : styles.hamburgerLine
-                        }
-                    ></div>
+                    <div className={`${styles.hamburgerLine} ${navbarOpen ? styles.hamburgerLineOpen : ""}`}></div>
+                    <div className={`${styles.hamburgerLine} ${navbarOpen ? styles.hamburgerLineOpen : ""}`}></div>
+                    <div className={`${styles.hamburgerLine} ${navbarOpen ? styles.hamburgerLineOpen : ""}`}></div>
                 </div>
             </div>
         </nav>
