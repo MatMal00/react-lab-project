@@ -1,0 +1,5 @@
+@use "styles/mixins" as *;
+
+.album {
+    @include app-container();
+}
