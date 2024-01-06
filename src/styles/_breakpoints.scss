@@ -10,6 +10,12 @@
   }
 }
 
+@mixin tablet-narrow-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
 @mixin tablet-landscape-up {
   @media (min-width: 900px) {
     @content;
