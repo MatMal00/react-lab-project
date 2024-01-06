@@ -11,7 +11,7 @@
 }
 
 @mixin tablet-narrow-up {
-  @media (min-width: 763px) {
+  @media (min-width: 768px) {
     @content;
   }
 }
