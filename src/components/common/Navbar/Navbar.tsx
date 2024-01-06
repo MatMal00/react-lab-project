@@ -9,17 +9,22 @@ interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
     const [activeLink, setActiveLink] = useState("");
+    const [navbarOpen, setNavbarOpen] = useState(false);
+
+    const openNavbar = () => {
+        setNavbarOpen(!navbarOpen);
+    };
 
     return (
         <nav className={styles.navbar}>
             <div className={styles.content}>
                 <h1>
-                    <Link className={styles.link} style={{ display: "flex" }} to={ROUTE.HOME}>
+                    <Link className={styles.logoLink} style={{ display: "flex" }} to={ROUTE.HOME}>
                         <AppLogoIcon style={{ marginRight: "5px" }}></AppLogoIcon> Project
                     </Link>
                 </h1>
 
-                <ul className={styles.link} style={{ display: "flex", gap: 10 }}>
+                <ul className={navbarOpen ? `${styles.link} ${styles.linkOpen}` : styles.link}>
                     <NavLink
                         dataName={"home"}
                         activeLink={activeLink}
@@ -42,12 +47,30 @@ export const Navbar: FC<INavbarProps> = () => {
                         setActiveLink={setActiveLink}
                     ></NavLink>
 
-                    <li>
+                    <li className={styles.list}>
                         <Link data-name="login" className={styles.loginBtn} to={ROUTE.LOGIN}>
                             Sign In
                         </Link>
                     </li>
                 </ul>
+
+                <div className={styles.hamburger} onClick={openNavbar}>
+                    <div
+                        className={
+                            navbarOpen ? `${styles.hamburgerLine} ${styles.hamburgerLineOpen}` : styles.hamburgerLine
+                        }
+                    ></div>
+                    <div
+                        className={
+                            navbarOpen ? `${styles.hamburgerLine} ${styles.hamburgerLineOpen}` : styles.hamburgerLine
+                        }
+                    ></div>
+                    <div
+                        className={
+                            navbarOpen ? `${styles.hamburgerLine} ${styles.hamburgerLineOpen}` : styles.hamburgerLine
+                        }
+                    ></div>
+                </div>
             </div>
         </nav>
     );

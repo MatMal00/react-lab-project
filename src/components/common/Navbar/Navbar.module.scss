@@ -1,6 +1,7 @@
 @use "styles/mixins" as *;
 @use "styles/colors" as *;
 @use "styles/variables" as *;
+@use "styles/breakpoints" as *;
 
 $navbar-height-mobile: 60px; // to do - set proper height when navbar is done
 
@@ -25,7 +26,8 @@ div.content {
     max-width: unset;
 }
 
-.link {
+.link,
+.logoLink {
     text-decoration: none;
     color: white;
     padding: 5px 25px;
@@ -47,3 +49,58 @@ div.content {
         background-color: darken($gold-color, 10%);
     }
 }
+
+.hamburger {
+    cursor: pointer;
+
+    &Line {
+        width: 30px;
+        height: 4px;
+        background-color: #fff;
+        margin: 5px;
+        border-radius: 20px;
+        transition: 0.4s;
+
+        &Open:first-child {
+            transform: rotate(-45deg) translate(-9px, 3px);
+        }
+
+        &Open:nth-child(2) {
+            opacity: 0;
+        }
+
+        &Open:last-child {
+            transform: rotate(45deg) translate(-10px, -3px);
+        }
+    }
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    color: $solid-black-color;
+    background-color: rgba(0%, 0%, 0%, 0.9);
+    transform: translateY(-100%);
+    transition: 0.3s;
+
+    &Open {
+        transform: translateY(0%);
+    }
+}
+
+@include phone-only {
+    .list {
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+    }
+}
+
+// @include tablet-portrait-up {
+// }

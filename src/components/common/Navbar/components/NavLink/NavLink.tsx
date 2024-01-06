@@ -16,7 +16,7 @@ export const NavLink: FC<INavlinkProps> = ({ dataName, activeLink, to, children,
     };
 
     return (
-        <li>
+        <li className={styles.list}>
             <Link
                 data-name={dataName}
                 className={`${styles.link} ${activeLink === dataName ? styles.linkActive : ""}`}

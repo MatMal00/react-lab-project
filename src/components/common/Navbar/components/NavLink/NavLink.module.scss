@@ -1,6 +1,7 @@
 @use "styles/mixins" as *;
 @use "styles/colors" as *;
 @use "styles/variables" as *;
+@use "styles/breakpoints" as *;
 
 .link {
     text-decoration: none;
@@ -16,4 +17,18 @@
 
 .linkActive {
     color: $gold-color;
+}
+
+@include phone-only {
+    .list {
+        padding: 15px;
+        text-align: center;
+    }
+}
+
+@include tablet-portrait-up {
+    .list {
+        padding: 15px;
+        text-align: center;
+    }
 }
