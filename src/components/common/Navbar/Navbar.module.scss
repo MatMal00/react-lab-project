@@ -1,18 +1,21 @@
 @use "styles/mixins" as *;
 @use "styles/colors" as *;
 @use "styles/variables" as *;
+@use "styles/breakpoints" as *;
 
-$navbar-height-mobile: 60px; // to do - set proper height when navbar is done
+$navbar-height-mobile: 60px;
 
 .navbar {
     padding-bottom: calc($navbar-height-mobile + $navbar-padding-bottom);
+    font-family: "Poppins", sans-serif;
 }
 
 .content {
-    @include app-container();
+    position: fixed;
     display: flex;
     justify-content: space-around;
-    position: fixed;
+    align-items: center;
+    padding: 10px;
     top: 0;
     width: 100%;
     background-color: $black-color;
@@ -21,4 +24,104 @@ $navbar-height-mobile: 60px; // to do - set proper height when navbar is done
 
 div.content {
     max-width: unset;
+}
+
+.links,
+.logoLink {
+    text-decoration: none;
+    color: $white-color;
+    padding: 5px 25px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.loginBtn {
+    text-decoration: none;
+    border-radius: 50px;
+    background-color: $gold-color;
+    color: $white-color;
+    padding: 5px 25px;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($gold-color, 10%);
+    }
+}
+
+.hamburger {
+    cursor: pointer;
+
+    &Line {
+        width: 30px;
+        height: 4px;
+        background-color: $backgroud-color;
+        margin: 5px;
+        border-radius: 20px;
+        transition: 0.4s;
+
+        &Open:first-child {
+            transform: rotate(-45deg) translate(-9px, 3px);
+        }
+
+        &Open:nth-child(2) {
+            opacity: 0;
+        }
+
+        &Open:last-child {
+            transform: rotate(45deg) translate(-10px, -3px);
+        }
+    }
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
+    color: $solid-black-color;
+    background-color: rgba(0%, 0%, 0%, 0.9);
+    transform: translateY(-100%);
+    transition: 0.3s;
+
+    &Open {
+        transform: translateY(0%);
+    }
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+@include tablet-narrow-up {
+    .links {
+        flex-direction: row;
+        justify-content: flex-start;
+        position: static;
+        height: auto;
+        min-width: auto;
+        color: inherit;
+        background-color: transparent;
+        transform: none;
+        transition: none;
+
+        &Open {
+            transform: none;
+        }
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .list {
+        display: block;
+        padding: 10px;
+    }
 }
