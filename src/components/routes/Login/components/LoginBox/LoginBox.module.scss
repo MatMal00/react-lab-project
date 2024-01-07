@@ -1,0 +1,35 @@
+@use "styles/colors" as *;
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
+
+.box {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 90%;
+    background-color: $black-color;
+    border-radius: $radius;
+    box-shadow: 3px 4px 8px $solid-black-color;
+}
+
+.title,
+.subTitle {
+    padding: 5px;
+    text-align: center;
+}
+
+.title {
+    color: $gold-color;
+}
+
+.subTitle {
+    color: #fff;
+    text-align: center;
+}
+
+@include tablet-landscape-up {
+    .box {
+        width: 50%;
+    }
+}
