@@ -1,0 +1,10 @@
+@use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    @include app-container();
+}
