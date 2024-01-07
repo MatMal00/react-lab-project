@@ -1,9 +1,10 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ROUTE } from "src/constants";
 import styles from "./Navbar.module.scss";
 import AppLogoIcon from "icons/app-logo.svg?react";
 import { NavLink } from "./components/NavLink";
+import Cookies from "js-cookie";
 
 interface INavbarProps {}
 
@@ -13,6 +14,20 @@ export const Navbar: FC<INavbarProps> = () => {
 
     const openNavbar = () => {
         setNavbarOpen(!navbarOpen);
+    };
+
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        const token = Cookies.get("AuthorizationToken");
+        if (token) {
+            setIsAuthenticated(true);
+        }
+    }, []);
+
+    const handleSignOut = () => {
+        Cookies.remove("AuthorizationToken");
+        setIsAuthenticated(false);
     };
 
     return (
@@ -48,9 +63,15 @@ export const Navbar: FC<INavbarProps> = () => {
                     ></NavLink>
 
                     <li className={styles.list}>
-                        <Link data-name="login" className={styles.loginBtn} to={ROUTE.LOGIN}>
-                            Sign In
-                        </Link>
+                        {isAuthenticated ? (
+                            <Link className={styles.loginBtn} onClick={handleSignOut} to={ROUTE.LOGIN}>
+                                Sign Out
+                            </Link>
+                        ) : (
+                            <Link data-name="login" className={styles.loginBtn} to={ROUTE.LOGIN}>
+                                Sign In
+                            </Link>
+                        )}
                     </li>
                 </ul>
 

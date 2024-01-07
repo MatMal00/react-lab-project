@@ -19,6 +19,7 @@ export const LoginBoxForm: FC = () => {
             Cookies.set("AuthorizationToken", response.authorizationToken);
 
             navigate("/", { replace: true });
+            window.location.reload(); //to fix
         } catch (error) {
             console.error(error);
         }
