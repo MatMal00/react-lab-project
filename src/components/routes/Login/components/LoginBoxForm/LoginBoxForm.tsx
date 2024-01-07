@@ -12,11 +12,10 @@ interface FormErrors {
 export const LoginBoxForm: FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState({});
+    const [, setErrors] = useState({});
 
     const navigate = useNavigate();
     const { login } = useFetchAuth();
-    console.log(errors);
 
     const validateForm = () => {
         const newErrors: FormErrors = {};
