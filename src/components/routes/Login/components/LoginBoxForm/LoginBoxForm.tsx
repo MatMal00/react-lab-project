@@ -2,6 +2,7 @@ import { useState, FC, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./LoginBoxForm.module.scss";
 import { useFetchAuth } from "src/libs";
+import Cookies from "js-cookie";
 
 export const LoginBoxForm: FC = () => {
     const [email, setEmail] = useState("");
@@ -14,7 +15,9 @@ export const LoginBoxForm: FC = () => {
 
         try {
             const response = await login({ email, password });
-            console.log(response);
+
+            Cookies.set("AuthorizationToken", response.authorizationToken);
+
             navigate("/", { replace: true });
         } catch (error) {
             console.error(error);
