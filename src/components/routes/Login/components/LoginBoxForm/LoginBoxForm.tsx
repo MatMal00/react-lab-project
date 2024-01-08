@@ -1,8 +1,7 @@
 import { useState, FC, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./LoginBoxForm.module.scss";
-import { useFetchAuth } from "src/libs";
-import Cookies from "js-cookie";
+import { useFetchAuth, useFetchAllUsers } from "src/libs";
 
 interface FormErrors {
     email?: string;
@@ -15,6 +14,9 @@ export const LoginBoxForm: FC = () => {
     const [, setErrors] = useState({});
 
     const navigate = useNavigate();
+
+    const userState = useFetchAllUsers();
+
     const { login } = useFetchAuth();
 
     const validateForm = () => {
@@ -42,15 +44,13 @@ export const LoginBoxForm: FC = () => {
 
         if (!validateForm()) return;
 
-        try {
-            const response = await login({ email, password });
+        const response = login({ email, userState });
 
-            Cookies.set("AuthorizationToken", response.authorizationToken);
+        if (response) {
+            window.localStorage.setItem("user", JSON.stringify(response));
 
             navigate("/", { replace: true });
             window.location.reload(); //to fix
-        } catch (error) {
-            console.error(error);
         }
     };
 
