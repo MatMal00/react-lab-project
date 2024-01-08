@@ -39,7 +39,7 @@ export const LoginBoxForm: FC = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleLogin = async (e: MouseEvent<HTMLButtonElement>) => {
+    const handleLogin = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
         if (!validateForm()) return;
