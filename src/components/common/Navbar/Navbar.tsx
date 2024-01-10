@@ -4,16 +4,17 @@ import { ROUTE } from "src/constants";
 import styles from "./Navbar.module.scss";
 import AppLogoIcon from "icons/app-logo.svg?react";
 import { NavLink } from "./components/NavLink";
+import { useAuth } from "src/libs";
 
 interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
     const [activeLink, setActiveLink] = useState("");
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const { logout, user } = useAuth();
 
-    const openNavbar = () => {
-        setNavbarOpen(!navbarOpen);
-    };
+    const openNavbar = () => setNavbarOpen(!navbarOpen);
+    const handleSignOut = () => logout();
 
     return (
         <nav className={styles.navbar}>
@@ -48,9 +49,15 @@ export const Navbar: FC<INavbarProps> = () => {
                     ></NavLink>
 
                     <li className={styles.list}>
-                        <Link data-name="login" className={styles.loginBtn} to={ROUTE.LOGIN}>
-                            Sign In
-                        </Link>
+                        {user ? (
+                            <Link className={styles.loginBtn} onClick={handleSignOut} to={ROUTE.LOGIN}>
+                                Sign Out
+                            </Link>
+                        ) : (
+                            <Link data-name="login" className={styles.loginBtn} to={ROUTE.LOGIN}>
+                                Sign In
+                            </Link>
+                        )}
                     </li>
                 </ul>
 
