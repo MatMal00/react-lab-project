@@ -1,33 +1,20 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { ROUTE } from "src/constants";
 import styles from "./Navbar.module.scss";
 import AppLogoIcon from "icons/app-logo.svg?react";
 import { NavLink } from "./components/NavLink";
+import { useAuth } from "src/libs";
 
 interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
     const [activeLink, setActiveLink] = useState("");
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const { logout, user } = useAuth();
 
-    const openNavbar = () => {
-        setNavbarOpen(!navbarOpen);
-    };
-
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    useEffect(() => {
-        const loggedUser = window.localStorage.getItem("user");
-        if (loggedUser) {
-            setIsAuthenticated(true);
-        }
-    }, []);
-
-    const handleSignOut = () => {
-        window.localStorage.removeItem("user");
-        setIsAuthenticated(false);
-    };
+    const openNavbar = () => setNavbarOpen(!navbarOpen);
+    const handleSignOut = () => logout();
 
     return (
         <nav className={styles.navbar}>
@@ -62,7 +49,7 @@ export const Navbar: FC<INavbarProps> = () => {
                     ></NavLink>
 
                     <li className={styles.list}>
-                        {isAuthenticated ? (
+                        {user ? (
                             <Link className={styles.loginBtn} onClick={handleSignOut} to={ROUTE.LOGIN}>
                                 Sign Out
                             </Link>
