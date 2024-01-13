@@ -19,10 +19,10 @@ const ACTION_ICON: TActionTypeIcon = {
 
 interface IButtonProps {
     text: string;
+    onClick: () => void;
     variant?: "primary" | "secondary";
     icon?: ReactNode;
     actionType?: keyof TActionTypeIcon;
-    onClick?: () => void;
 }
 
 export const Button: FC<IButtonProps> = ({ text, icon, onClick, actionType, variant = "primary" }) => {

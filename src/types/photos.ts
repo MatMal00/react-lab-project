@@ -4,5 +4,5 @@ export interface IPhoto {
     title: string;
     url: string;
     thumbnailUrl: string;
-    createdById?: string;
+    createdById?: number;
 }

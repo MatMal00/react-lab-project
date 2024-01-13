@@ -18,7 +18,7 @@ export const Album: FC<IAlbumProps> = () => {
             <ActionsHandler<IPhoto[]> {...albumState} skeleton={<Skeleton.Album noOfSkeletons={9} />}>
                 {(photos) => (
                     <>
-                        {user && <AddPhoto />}
+                        {user && <AddPhoto userId={user.id} />}
                         <PhotosList photos={photos} />
                     </>
                 )}
