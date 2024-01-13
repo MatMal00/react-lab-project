@@ -1,0 +1,50 @@
+@use "styles/colors" as *;
+
+.button {
+    margin-bottom: 20px;
+    padding: 5px 12px;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    gap: 8px;
+    border: 1px solid $solid-black-color;
+    color: $solid-black-color;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px #00000091;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    span {
+        margin-top: 2px;
+        width: 20px;
+        height: 20px;
+
+        svg {
+            height: 100%;
+        }
+    }
+}
+
+// Variants
+.primary {
+    background-color: #dfdfdf;
+}
+
+.secondary {
+    background-color: #4d4d4d;
+    color: $white-color;
+}
+
+// Action button variants
+.addVariant {
+    background-color: $add-btn-variant;
+}
+
+.removeVariant {
+    background-color: $remove-btn-variant;
+}
+
+.editVariant {
+    background-color: $edit-btn-variant;
+}

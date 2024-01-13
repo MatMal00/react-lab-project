@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
-import AddIcon from "icons/add.svg";
-import RemoveIcon from "icons/remove.svg";
-import EditIcon from "icons/edit.svg";
+import AddIcon from "icons/add.svg?react";
+import RemoveIcon from "icons/remove.svg?react";
+import EditIcon from "icons/edit.svg?react";
 import cn from "classnames";
 import styles from "./Button.module.scss";
 
@@ -19,18 +19,18 @@ const ACTION_ICON: TActionTypeIcon = {
 
 interface IButtonProps {
     text: string;
-    theme: "primary" | "secondary";
+    variant?: "primary" | "secondary";
     icon?: ReactNode;
     actionType?: keyof TActionTypeIcon;
     onClick?: () => void;
 }
 
-export const Button: FC<IButtonProps> = ({ text, icon, onClick, actionType, theme = "primary" }) => {
-    const actionIcon = actionType ? ACTION_ICON[actionType] : undefined;
+export const Button: FC<IButtonProps> = ({ text, icon, onClick, actionType, variant = "primary" }) => {
+    const iconToRender = actionType ? ACTION_ICON[actionType] : icon;
 
     return (
-        <button onClick={onClick} className={(styles.button, cn([styles[theme]]))}>
-            {(icon || actionIcon) && <span>{icon}</span>}
+        <button onClick={onClick} className={cn(styles.button, styles[actionType ? `${actionType}Variant` : variant])}>
+            {iconToRender && <span>{iconToRender}</span>}
             {text}
         </button>
     );
