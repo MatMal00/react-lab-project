@@ -1,4 +1,4 @@
-# emantic Commit Messages
+# Semantic Commit Messages
 
 1. feat: (new feature)
 2. fix: (bug fix for the user)
