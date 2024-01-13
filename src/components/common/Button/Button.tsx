@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
-import AddIcon from "@icons/add.svg";
-import RemoveIcon from "@icons/remove.svg";
-import EditIcon from "@icons/edit.svg";
+import AddIcon from "icons/add.svg";
+import RemoveIcon from "icons/remove.svg";
+import EditIcon from "icons/edit.svg";
 import cn from "classnames";
 import styles from "./Button.module.scss";
 
