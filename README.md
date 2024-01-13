@@ -1,9 +1,13 @@
+# emantic Commit Messages
+
 1. feat: (new feature)
 2. fix: (bug fix for the user)
 3. docs: (changes to the documentation)
 4. style: (formatting, missing semi colons, etc;)
 5. ref: (refactoring production code, eg. renaming a variable)
 6. chore: (updating grunt tasks etc;)
+
+# Wymagania Projektowe
 
 1. Strona logowania
 2. Strona z głównym feedem ze zdjęciami - możliwość przeglądania folderów oraz wszystkich zdjęć, możliwość filtrowania po konkretnym userze, możliwość dodawania nowych zdjęć. możliwość usuwania zdjęć ale tylko własnych
