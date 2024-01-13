@@ -9,7 +9,6 @@ import { useAuth } from "src/libs";
 interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
-    const [activeLink, setActiveLink] = useState("");
     const [navbarOpen, setNavbarOpen] = useState(false);
     const { logout, user } = useAuth();
 
@@ -26,27 +25,9 @@ export const Navbar: FC<INavbarProps> = () => {
                 </h1>
 
                 <ul className={`${styles.links} ${navbarOpen ? styles.linksOpen : ""}`}>
-                    <NavLink
-                        dataName={"home"}
-                        activeLink={activeLink}
-                        to={ROUTE.HOME}
-                        children={"Home"}
-                        setActiveLink={setActiveLink}
-                    ></NavLink>
-                    <NavLink
-                        dataName={"posts"}
-                        activeLink={activeLink}
-                        to={ROUTE.POSTS}
-                        children={"Posts"}
-                        setActiveLink={setActiveLink}
-                    ></NavLink>
-                    <NavLink
-                        dataName={"albums"}
-                        activeLink={activeLink}
-                        to={ROUTE.ALBUMS}
-                        children={"Albums"}
-                        setActiveLink={setActiveLink}
-                    ></NavLink>
+                    <NavLink to={ROUTE.HOME} children={"Home"}></NavLink>
+                    <NavLink to={ROUTE.POSTS} children={"Posts"}></NavLink>
+                    <NavLink to={ROUTE.ALBUMS} children={"Albums"}></NavLink>
 
                     <li className={styles.list}>
                         {user ? (

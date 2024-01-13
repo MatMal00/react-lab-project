@@ -9,7 +9,9 @@ import { IUser } from "src/types";
 export const useAuth = () => {
     const navigate = useNavigate();
     const [error, setError] = useState<string | undefined>();
-    const { data: user, mutate } = useImmutableSWR<IUser | undefined>("/user", getUserFromLocalStorage);
+    const { data: user, mutate } = useImmutableSWR<IUser | undefined>("/user", {
+        fallbackData: getUserFromLocalStorage(),
+    });
     const { trigger, isMutating: isLoading } = useSWRMutation("/users", sendLoginCall);
 
     const login = useCallback(
