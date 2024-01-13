@@ -1,3 +1,10 @@
+feat: (new feature)
+fix: (bug fix for the user)
+docs: (changes to the documentation)
+style: (formatting, missing semi colons, etc;)
+ref: (refactoring production code, eg. renaming a variable)
+chore: (updating grunt tasks etc;)
+
 1. Strona logowania
 2. Strona z głównym feedem ze zdjęciami - możliwość przeglądania folderów oraz wszystkich zdjęć, możliwość filtrowania po konkretnym userze, możliwość dodawania nowych zdjęć. możliwość usuwania zdjęć ale tylko własnych
 3. Strona użytkownika zalogowanego ze wszystkimi danymi, z jego postami, z jego zdjęciami + możliwość edycji danych usera ale tylko zalogowanego
