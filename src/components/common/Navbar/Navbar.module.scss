@@ -49,31 +49,6 @@ div.content {
     }
 }
 
-.hamburger {
-    cursor: pointer;
-
-    &Line {
-        width: 30px;
-        height: 4px;
-        background-color: $backgroud-color;
-        margin: 5px;
-        border-radius: 20px;
-        transition: 0.4s;
-
-        &Open:first-child {
-            transform: rotate(-45deg) translate(-9px, 3px);
-        }
-
-        &Open:nth-child(2) {
-            opacity: 0;
-        }
-
-        &Open:last-child {
-            transform: rotate(45deg) translate(-10px, -3px);
-        }
-    }
-}
-
 .links {
     display: flex;
     flex-direction: column;
@@ -114,10 +89,6 @@ div.content {
         &Open {
             transform: none;
         }
-    }
-
-    .hamburger {
-        display: none;
     }
 
     .list {
