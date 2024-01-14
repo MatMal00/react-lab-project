@@ -14,9 +14,9 @@ export const postRequest = async <T>(url: string, data: object) => {
     }
 };
 
-export const deleteRequest = async <T>(url: string, data: object) => {
+export const deleteRequest = async <T>(url: string) => {
     try {
-        const response = await api().post<T>(url, { data });
+        const response = await api().delete<T>(url);
 
         const status = httpStatus(response.status);
         if (status !== "success") throw response;

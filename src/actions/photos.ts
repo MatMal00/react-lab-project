@@ -6,9 +6,7 @@ export const addPhotoToAlbumAction = async (newPhoto: IPhoto, photos?: IPhoto[],
     return [{ ...addedPhoto }, ...(photos ?? [])];
 };
 
-export const removePhotoFromAlbumAction = async (photoId: number, photos?: IPhoto[], albumId?: string) => {
-    const { photoId: removedPhotoId } = (
-        await deleteRequest<{ data: { photoId: number } }>(`/photos?albumId=${albumId}`, { photoId })
-    ).data;
-    return (photos ?? []).filter((photo) => photo.id !== removedPhotoId);
+export const removePhotoFromAlbumAction = async (photoId: number, photos?: IPhoto[]) => {
+    await deleteRequest(`/photos/${1}`);
+    return (photos ?? []).filter((photo) => photo.id !== photoId);
 };

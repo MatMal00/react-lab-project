@@ -21,7 +21,7 @@ export const useFetchAlbum = (albumId?: string) => {
 
     const removePhotoFromAlbum = async (photoId: number) => {
         try {
-            await mutate((photos) => removePhotoFromAlbumAction(photoId, photos, albumId), {
+            await mutate((photos) => removePhotoFromAlbumAction(photoId, photos), {
                 optimisticData: (photos) => (photos ?? []).filter((photo) => photo.id !== photoId),
                 populateCache: true,
                 revalidate: false,
