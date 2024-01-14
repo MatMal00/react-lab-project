@@ -1,18 +1,22 @@
 import api from "src/api";
 import { AxiosError } from "axios";
-import { httpStatus } from "src/helpers";
+import { apiErrorHandler, httpStatus } from "src/helpers";
 import { IUser } from "src/types";
 
 export const sendLoginCall = async (url: string, { arg: { email } }: { arg: { email: string } }) => {
-    const response = await api().get<IUser[]>(url);
+    try {
+        const response = await api().get<IUser[]>(url);
 
-    const status = httpStatus(response.status);
-    if (status !== "success") throw response;
+        const status = httpStatus(response.status);
+        if (status !== "success") throw response;
 
-    const user = response.data.find((user) => user.email === email);
+        const user = response.data.find((user) => user.email === email);
 
-    if (user) return user;
-    else throw new AxiosError("Failed to log in");
+        if (user) return user;
+        else throw new AxiosError("Failed to log in");
+    } catch (error) {
+        throw apiErrorHandler(error);
+    }
 };
 
 export const getUserFromLocalStorage = (): IUser | undefined => {
