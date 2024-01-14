@@ -1,8 +1,21 @@
-import SWR from "swr";
-import { fetcher } from "src/actions";
+import useSWRImmutable from "swr/immutable";
+import { addPhotoToAlbumAction, fetcher } from "src/actions";
 import { IPhoto } from "src/types";
 
 export const useFetchAlbum = (albumId?: string) => {
-    const { data, error, isLoading } = SWR<IPhoto[], string>(`/photos?albumId=${albumId}`, fetcher);
-    return { data, error, isLoading };
+    const { data, error, isLoading, mutate } = useSWRImmutable<IPhoto[], string>(`/photos?albumId=${albumId}`, fetcher);
+
+    const addPhotoToAlbum = async (newPhoto: IPhoto) => {
+        try {
+            await mutate((photos) => addPhotoToAlbumAction(newPhoto, photos, albumId), {
+                optimisticData: (photos) => [newPhoto, ...(photos ?? [])],
+                populateCache: true,
+                revalidate: false,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    return { data, error, isLoading, addPhotoToAlbum };
 };
