@@ -1,6 +1,7 @@
 import useSWRImmutable from "swr/immutable";
 import { addPhotoToAlbumAction, fetcher } from "src/actions";
 import { IPhoto } from "src/types";
+import toast from "react-hot-toast";
 
 export const useFetchAlbum = (albumId?: string) => {
     const { data, error, isLoading, mutate } = useSWRImmutable<IPhoto[], string>(`/photos?albumId=${albumId}`, fetcher);
@@ -12,8 +13,9 @@ export const useFetchAlbum = (albumId?: string) => {
                 populateCache: true,
                 revalidate: false,
             });
-        } catch (error) {
-            console.log(error);
+            toast.success("Succesfully added the photo");
+        } catch {
+            toast.error("Failed to add photo");
         }
     };
 
