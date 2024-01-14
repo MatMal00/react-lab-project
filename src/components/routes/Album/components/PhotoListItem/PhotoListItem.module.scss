@@ -1,5 +1,25 @@
+@use "styles/colors" as *;
+
 .photoListItem {
+    position: relative;
     flex-basis: 350px;
+
+    button {
+        padding: 10px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+
+        &:hover > svg,
+        &:focus > svg {
+            fill: darken($error-color, 10%);
+        }
+
+        svg {
+            fill: $error-color;
+            transition: fill 0.3s;
+        }
+    }
 
     img {
         max-width: 100%;

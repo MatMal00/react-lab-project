@@ -11,7 +11,7 @@ interface IAlbumProps {}
 export const Album: FC<IAlbumProps> = () => {
     const { user } = useAuth();
     const { albumId } = useParams();
-    const { addPhotoToAlbum, ...albumState } = useFetchAlbum(albumId);
+    const { addPhotoToAlbum, removePhotoFromAlbum, ...albumState } = useFetchAlbum(albumId);
 
     return (
         <section className={styles.album}>
@@ -23,7 +23,7 @@ export const Album: FC<IAlbumProps> = () => {
                                 <AddPhotoForm handleAddPhoto={addPhotoToAlbum} albumId={albumId} userId={user.id} />
                             </AddPhotoContainer>
                         )}
-                        <PhotosList photos={photos} />
+                        <PhotosList photos={photos} handleRemovePhoto={removePhotoFromAlbum} userId={user?.id} />
                     </>
                 )}
             </ActionsHandler>
