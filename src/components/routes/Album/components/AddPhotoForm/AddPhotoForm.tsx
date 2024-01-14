@@ -15,7 +15,7 @@ export const AddPhotoForm: FC<IAddPhotoFormProps> = ({ albumId, userId, handleAd
     return (
         <Formik
             initialValues={{ photoUrl: "", title: "" }}
-            onSubmit={({ title, photoUrl }) => {
+            onSubmit={({ title, photoUrl }, { resetForm }) => {
                 if (albumId) {
                     const newPhoto: IPhoto = {
                         albumId: +albumId,
@@ -26,6 +26,7 @@ export const AddPhotoForm: FC<IAddPhotoFormProps> = ({ albumId, userId, handleAd
                         createdById: userId,
                     };
                     handleAddPhoto(newPhoto);
+                    resetForm();
                 }
             }}
         >
