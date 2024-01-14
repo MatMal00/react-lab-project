@@ -36,8 +36,5 @@
     padding: 10px 35px;
     transition: 0.3s;
     cursor: pointer;
-
-    &:hover {
-        background-color: darken($gold-color, 10%);
-    }
+    @include buttonVariant($gold-color);
 }

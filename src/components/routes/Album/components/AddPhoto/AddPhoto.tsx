@@ -1,5 +1,6 @@
-import { FC, useState } from "react";
-import { Button, Modal } from "src/components/common";
+import { FC } from "react";
+import { Button } from "src/components/common";
+import { Form, Formik } from "formik";
 import styles from "./AddPhoto.module.scss";
 
 interface IAddPhotoProps {
@@ -7,18 +8,19 @@ interface IAddPhotoProps {
 }
 
 export const AddPhoto: FC<IAddPhotoProps> = ({ userId }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleSetIsOpen = () => setIsOpen((prev) => !prev);
-
     return (
         <div className={styles.addPhoto}>
             <h2>As logged in customer you can manage your photos</h2>
-            <Button onClick={handleSetIsOpen} text="Add photo" actionType="add" />
-
-            <Modal handleClose={handleSetIsOpen} isOpen={isOpen}>
-                <Modal.AddPhoto userId={userId} />
-            </Modal>
+            <Formik
+                initialValues={{}}
+                onSubmit={() => {
+                    console.log(userId);
+                }}
+            >
+                <Form>
+                    <Button type="submit" text="Add photo" actionType="add" />
+                </Form>
+            </Formik>
         </div>
     );
 };

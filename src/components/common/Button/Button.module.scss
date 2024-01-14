@@ -1,4 +1,5 @@
 @use "styles/colors" as *;
+@use "styles/mixins" as *;
 
 .button {
     margin-bottom: 20px;
@@ -9,12 +10,13 @@
     gap: 8px;
     border: 1px solid $solid-black-color;
     color: $solid-black-color;
+    font-weight: 500;
     border-radius: 10px;
     box-shadow: 2px 2px 6px #00000091;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    transition: 0.3s scale;
+    transition: 0.3s background-color;
 
     span {
         margin-top: 2px;
@@ -25,32 +27,26 @@
             height: 100%;
         }
     }
-
-    &:hover,
-    &:focus {
-        scale: 0.96;
-    }
 }
 
 // Variants
 .primary {
-    background-color: #dfdfdf;
+    @include buttonVariant($primary-btn-variant);
 }
 
 .secondary {
-    background-color: #4d4d4d;
-    color: $white-color;
+    @include buttonVariant($secondary-btn-variant);
 }
 
 // Action button variants
 .addVariant {
-    background-color: $add-btn-variant;
+    @include buttonVariant($add-btn-variant);
 }
 
 .removeVariant {
-    background-color: $remove-btn-variant;
+    @include buttonVariant($remove-btn-variant);
 }
 
 .editVariant {
-    background-color: $edit-btn-variant;
+    @include buttonVariant($edit-btn-variant);
 }
