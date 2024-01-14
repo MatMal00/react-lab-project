@@ -42,6 +42,7 @@ div.content {
     color: $white-color;
     padding: 5px 25px;
     transition: 0.3s;
+    white-space: nowrap;
     cursor: pointer;
 
     &:hover {
@@ -94,5 +95,16 @@ div.content {
     .list {
         display: block;
         padding: 10px;
+    }
+    .settingsBtn {
+        display: flex;
+        justify-content: center;
+        padding: 5px 10px;
+    }
+}
+
+@include tablet-landscape-up {
+    .settingsBtn {
+        padding: 5px 25px;
     }
 }

@@ -4,6 +4,7 @@ import { ROUTE } from "src/constants";
 import { Hamburger, NavLink } from "./components";
 import { useAuth } from "src/libs";
 import AppLogoIcon from "icons/app-logo.svg?react";
+import SettingsIcon from "icons/settings.svg?react";
 import cn from "classnames";
 import styles from "./Navbar.module.scss";
 
@@ -30,6 +31,9 @@ export const Navbar: FC<INavbarProps> = () => {
                     <NavLink to={ROUTE.POSTS}>Posts</NavLink>
                     <NavLink to={ROUTE.ALBUMS}>Albums</NavLink>
 
+                    <Link className={styles.settingsBtn} to={ROUTE.SETTINGS}>
+                        <SettingsIcon style={{ marginRight: "5px" }}></SettingsIcon>
+                    </Link>
                     <li className={styles.list}>
                         {user ? (
                             <Link className={styles.loginBtn} onClick={handleSignOut} to={ROUTE.LOGIN}>
