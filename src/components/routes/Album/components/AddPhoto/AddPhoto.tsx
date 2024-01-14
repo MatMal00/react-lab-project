@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { Button } from "src/components/common";
-import { Form, Formik } from "formik";
+import { AddPhotoForm } from "../AddPhotoForm";
 import styles from "./AddPhoto.module.scss";
 
 interface IAddPhotoProps {
@@ -11,16 +10,7 @@ export const AddPhoto: FC<IAddPhotoProps> = ({ userId }) => {
     return (
         <div className={styles.addPhoto}>
             <h2>As logged in customer you can manage your photos</h2>
-            <Formik
-                initialValues={{}}
-                onSubmit={() => {
-                    console.log(userId);
-                }}
-            >
-                <Form>
-                    <Button type="submit" text="Add photo" actionType="add" />
-                </Form>
-            </Formik>
+            <AddPhotoForm userId={userId} />
         </div>
     );
 };

@@ -1,0 +1,25 @@
+@use "styles/colors" as *;
+@use "styles/variables" as *;
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    label {
+        font-size: 1.5rem;
+        font-weight: 500;
+
+        &:focus-within {
+            font-weight: bold;
+        }
+    }
+
+    input {
+        padding: 10px;
+        font-size: 1.4rem;
+        flex: 1;
+        border: 1px solid #aaa;
+        border-radius: $radius;
+    }
+}
