@@ -10,7 +10,13 @@
 }
 
 .avatar {
+    height: 40px;
     align-self: center;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .textBox {
