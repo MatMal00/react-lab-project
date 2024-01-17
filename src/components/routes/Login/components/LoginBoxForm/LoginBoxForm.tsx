@@ -12,7 +12,7 @@ export const LoginBoxForm: FC = () => {
     const [password, setPassword] = useState("");
     const [, setErrors] = useState({});
 
-    const { login, error } = useAuth();
+    const { login } = useAuth();
 
     const validateForm = () => {
         const newErrors: FormErrors = {};
@@ -41,7 +41,6 @@ export const LoginBoxForm: FC = () => {
         login(email);
     };
 
-    console.log({ error });
     return (
         <form className={styles.form}>
             <label htmlFor="email" className={styles.label}>

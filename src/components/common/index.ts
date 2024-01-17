@@ -8,3 +8,4 @@ export * from "./Card";
 export * from "./Portal";
 export * from "./Skeleton";
 export * from "./Formik";
+export * from "./ProtectedRoute";

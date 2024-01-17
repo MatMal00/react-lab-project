@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 import { ROUTE } from "src/constants";
 import { Hamburger, NavLink } from "./components";
 import { useAuth } from "src/libs";
@@ -32,7 +32,12 @@ export const Navbar: FC<INavbarProps> = () => {
                     <NavLink to={ROUTE.ALBUMS}>Albums</NavLink>
 
                     {isLoggedIn && (
-                        <Link className={styles.settingsBtn} to={ROUTE.SETTINGS}>
+                        <Link
+                            className={({ isActive }) =>
+                                cn(styles.settingsBtn, { [styles.settingsBtnActive]: isActive })
+                            }
+                            to={ROUTE.SETTINGS}
+                        >
                             <SettingsIcon style={{ marginRight: "5px" }}></SettingsIcon>
                         </Link>
                     )}
