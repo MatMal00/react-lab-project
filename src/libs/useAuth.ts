@@ -2,9 +2,10 @@ import { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useSWRMutation from "swr/mutation";
 import useImmutableSWR from "swr/immutable";
-import { getUserFromLocalStorage, sendLoginCall } from "src/actions";
+import { getUserFromLocalStorage, sendLoginCall, updateUserDataAction } from "src/actions";
 import { IUser } from "src/types";
 import { ROUTE } from "src/constants";
+import toast from "react-hot-toast";
 
 export const useAuth = () => {
     const navigate = useNavigate();
@@ -27,10 +28,27 @@ export const useAuth = () => {
         [mutate, navigate, trigger, from]
     );
 
+    const updateUserData = useCallback(
+        async (updatedData: Partial<IUser>) => {
+            try {
+                if (user)
+                    await mutate(() => updateUserDataAction(updatedData, user), {
+                        optimisticData: () => ({ ...user, ...updatedData }),
+                        populateCache: true,
+                        revalidate: false,
+                    });
+                toast.success("Successfully updated user data");
+            } catch {
+                toast.error("Failed to update user data");
+            }
+        },
+        [mutate, user]
+    );
+
     const logout = useCallback(() => {
         mutate(undefined, { revalidate: false });
         window.localStorage.removeItem("user");
     }, [mutate]);
 
-    return { user, login, logout, isLoading, error, isLoggedIn: !!user };
+    return { user, login, logout, updateUserData, isLoading, error, isLoggedIn: !!user };
 };

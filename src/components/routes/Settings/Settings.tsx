@@ -8,7 +8,7 @@ import { useAuth } from "src/libs";
 interface ISettingsProps {}
 
 export const Settings: FC<ISettingsProps> = () => {
-    const { user: { name, username, email, phone, website } = {} } = useAuth();
+    const { user: { name, username, email, phone, website } = {}, updateUserData } = useAuth();
 
     return (
         <section className={styles.settings}>
@@ -17,15 +17,21 @@ export const Settings: FC<ISettingsProps> = () => {
                     <Avatar className={styles.avatar}>
                         <ManAvatarIcon />
                     </Avatar>
-                    <Formik initialValues={{ name, username, email, phone, website }} onSubmit={() => {}}>
-                        <Form className={styles.form}>
-                            <FormikInput name="email" label="Email" />
-                            <FormikInput name="name" label="Name" />
-                            <FormikInput name="phone" label="Phone" />
-                            <FormikInput name="username" label="Username" />
-                            <FormikInput name="website" label="Website" />
-                            <Button type="submit" text="Edit" actionType="edit" />
-                        </Form>
+                    <Formik
+                        initialValues={{ name, username, email, phone, website }}
+                        onSubmit={(updatedData) => updateUserData(updatedData)}
+                        enableReinitialize
+                    >
+                        {({ isSubmitting }) => (
+                            <Form className={styles.form}>
+                                <FormikInput disabled={isSubmitting} name="email" label="Email" />
+                                <FormikInput disabled={isSubmitting} name="name" label="Name" />
+                                <FormikInput disabled={isSubmitting} name="phone" label="Phone" />
+                                <FormikInput disabled={isSubmitting} name="username" label="Username" />
+                                <FormikInput disabled={isSubmitting} name="website" label="Website" />
+                                <Button disabled={isSubmitting} type="submit" text="Edit" actionType="edit" />
+                            </Form>
+                        )}
                     </Formik>
                 </Card.Body>
             </Card>
