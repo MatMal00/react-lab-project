@@ -1,30 +1,22 @@
 import api from "src/api";
-import { apiErrorHandler, httpStatus } from "src/helpers";
+import { httpStatus } from "src/helpers";
 
 export const postRequest = async <T>(url: string, data: object) => {
-    try {
-        const response = await api().post<T>(url, { data });
+    const response = await api().post<T>(url, { data });
 
-        const status = httpStatus(response.status);
-        if (status !== "success") throw response;
+    const status = httpStatus(response.status);
+    if (status !== "success") throw response;
 
-        return response.data;
-    } catch (error) {
-        throw apiErrorHandler(error);
-    }
+    return response.data;
 };
 
 export const deleteRequest = async <T>(url: string) => {
-    try {
-        const response = await api().delete<T>(url);
+    const response = await api().delete<T>(url);
 
-        const status = httpStatus(response.status);
-        if (status !== "success") throw response;
+    const status = httpStatus(response.status);
+    if (status !== "success") throw response;
 
-        return response.data;
-    } catch (error) {
-        throw apiErrorHandler(error);
-    }
+    return response.data;
 };
 
 export const updateRequest = async <T>(url: string, data: object) => {
