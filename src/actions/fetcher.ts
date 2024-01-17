@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import api from "src/api";
 import { apiErrorHandler, httpStatus } from "src/helpers";
 
@@ -15,6 +16,8 @@ export const fetcher = async <T>(url: string) => {
 
         return response.data;
     } catch (error) {
+        const errorMessage = apiErrorHandler(error);
+        toast.error(errorMessage);
         throw apiErrorHandler(error);
     }
 };
