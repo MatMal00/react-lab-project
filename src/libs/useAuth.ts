@@ -38,7 +38,7 @@ export const useAuth = () => {
             try {
                 if (user)
                     await mutate(() => updateUserDataAction(updatedData, user), {
-                        optimisticData: () => ({ ...user, ...updatedData }),
+                        optimisticData: { ...user, ...updatedData },
                         populateCache: true,
                         revalidate: false,
                     });
