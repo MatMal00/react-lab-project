@@ -28,14 +28,10 @@ export const deleteRequest = async <T>(url: string) => {
 };
 
 export const updateRequest = async <T>(url: string, data: object) => {
-    try {
-        const response = await api().patch<T>(url, { data });
+    const response = await api().patch<T>(url, { data });
 
-        const status = httpStatus(response.status);
-        if (status !== "success") throw response;
+    const status = httpStatus(response.status);
+    if (status !== "success") throw response;
 
-        return response.data;
-    } catch (error) {
-        throw apiErrorHandler(error);
-    }
+    return response.data;
 };
