@@ -1,5 +1,7 @@
-import { useState, FC, MouseEvent } from "react";
+import { FC } from "react";
 import { useAuth } from "src/libs";
+import { Form, Formik, FormikErrors } from "formik";
+import { FormikInput } from "src/components";
 import styles from "./LoginBoxForm.module.scss";
 
 interface FormErrors {
@@ -8,13 +10,18 @@ interface FormErrors {
 }
 
 export const LoginBoxForm: FC = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [, setErrors] = useState({});
+    const { login, isLoading } = useAuth();
 
-    const { login } = useAuth();
-
-    const validateForm = () => {
+    const validateForm = (
+        email: string,
+        password: string,
+        setErrors: (
+            errors: FormikErrors<{
+                email: string;
+                password: string;
+            }>
+        ) => void
+    ) => {
         const newErrors: FormErrors = {};
 
         if (!email) {
@@ -34,44 +41,26 @@ export const LoginBoxForm: FC = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleLogin = (e: MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-
-        if (!validateForm()) return;
-        login(email);
-    };
-
     return (
-        <form className={styles.form}>
-            <label htmlFor="email" className={styles.label}>
-                Email:
-            </label>
-            <input
-                type="email"
-                id="email"
-                className={styles.input}
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
+        <Formik
+            initialValues={{ email: "", password: "" }}
+            onSubmit={({ email, password }, { setErrors }) => {
+                if (!validateForm(email, password, setErrors)) return;
+                return login(email);
+            }}
+        >
+            <>
+                <Form className={styles.form}>
+                    <FormikInput disabled={isLoading} type="email" name="email" label="Email:" />
+                    <FormikInput disabled={isLoading} type="password" name="password" label="Password" />
 
-            <label htmlFor="password" className={styles.label}>
-                Password:
-            </label>
-            <input
-                type="password"
-                id="password"
-                className={styles.input}
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <div className={styles.btnWrapper}>
-                <button type="submit" className={styles.button} onClick={handleLogin}>
-                    Login
-                </button>
-            </div>
-        </form>
+                    <div className={styles.btnWrapper}>
+                        <button disabled={isLoading} type="submit" className={styles.button}>
+                            Login
+                        </button>
+                    </div>
+                </Form>
+            </>
+        </Formik>
     );
 };
