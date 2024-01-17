@@ -1,8 +1,7 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { useAuth } from "src/libs";
 import { Form, Formik, FormikErrors } from "formik";
 import { FormikInput } from "src/components";
-import toast from "react-hot-toast";
 import styles from "./LoginBoxForm.module.scss";
 
 interface FormErrors {
@@ -11,7 +10,7 @@ interface FormErrors {
 }
 
 export const LoginBoxForm: FC = () => {
-    const { login, error, isLoading } = useAuth();
+    const { login, isLoading } = useAuth();
 
     const validateForm = (
         email: string,
@@ -42,9 +41,6 @@ export const LoginBoxForm: FC = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    useEffect(() => {
-        if (error && !isLoading) toast.error("Failed to login");
-    }, [error, isLoading]);
     return (
         <Formik
             initialValues={{ email: "", password: "" }}

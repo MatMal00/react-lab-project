@@ -5,6 +5,7 @@ import useImmutableSWR from "swr/immutable";
 import { getUserFromLocalStorage, sendLoginCall, updateUserDataAction } from "src/actions";
 import { IUser } from "src/types";
 import { ROUTE } from "src/constants";
+import { apiErrorHandler } from "src/helpers";
 import toast from "react-hot-toast";
 
 export const useAuth = () => {
@@ -18,12 +19,16 @@ export const useAuth = () => {
 
     const login = useCallback(
         async (email: string) => {
-            const userToLogin = await trigger({ email });
+            try {
+                const userToLogin = await trigger({ email });
 
-            mutate(userToLogin, { revalidate: false });
-            window.localStorage.setItem("user", JSON.stringify(userToLogin));
+                mutate(userToLogin, { revalidate: false });
+                window.localStorage.setItem("user", JSON.stringify(userToLogin));
 
-            navigate(from, { replace: true });
+                navigate(from, { replace: true });
+            } catch (error) {
+                toast.error(apiErrorHandler(error));
+            }
         },
         [mutate, navigate, trigger, from]
     );
