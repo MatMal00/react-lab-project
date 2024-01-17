@@ -1,8 +1,8 @@
+import { useCallback } from "react";
 import useSWRImmutable from "swr/immutable";
 import { addPhotoToAlbumAction, fetcher, removePhotoFromAlbumAction } from "src/actions";
 import { IPhoto } from "src/types";
 import toast from "react-hot-toast";
-import { useCallback } from "react";
 
 export const useFetchAlbum = (albumId?: string) => {
     const { data, error, isLoading, mutate } = useSWRImmutable<IPhoto[], string>(`/photos?albumId=${albumId}`, fetcher);
