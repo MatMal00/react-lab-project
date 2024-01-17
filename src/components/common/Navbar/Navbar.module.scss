@@ -75,6 +75,17 @@ div.content {
     padding: 15px;
 }
 
+.settingsBtn {
+    align-self: center;
+
+    svg {
+        transition: fill 0.3s;
+        &:hover {
+            fill: $gold-color;
+        }
+    }
+}
+
 @include tablet-narrow-up {
     .links {
         flex-direction: row;
