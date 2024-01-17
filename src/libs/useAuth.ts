@@ -29,5 +29,5 @@ export const useAuth = () => {
         window.localStorage.removeItem("user");
     }, [mutate]);
 
-    return { user, login, logout, isLoading, error };
+    return { user, login, logout, isLoading, error, isLoggedIn: !!user };
 };

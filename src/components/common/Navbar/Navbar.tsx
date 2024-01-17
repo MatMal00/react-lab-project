@@ -12,7 +12,7 @@ interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-    const { logout, user } = useAuth();
+    const { logout, isLoggedIn } = useAuth();
 
     const handleOpenNavbar = () => setIsNavbarOpen(!isNavbarOpen);
     const handleSignOut = () => logout();
@@ -31,11 +31,13 @@ export const Navbar: FC<INavbarProps> = () => {
                     <NavLink to={ROUTE.POSTS}>Posts</NavLink>
                     <NavLink to={ROUTE.ALBUMS}>Albums</NavLink>
 
-                    <Link className={styles.settingsBtn} to={ROUTE.SETTINGS}>
-                        <SettingsIcon style={{ marginRight: "5px" }}></SettingsIcon>
-                    </Link>
+                    {isLoggedIn && (
+                        <Link className={styles.settingsBtn} to={ROUTE.SETTINGS}>
+                            <SettingsIcon style={{ marginRight: "5px" }}></SettingsIcon>
+                        </Link>
+                    )}
                     <li className={styles.list}>
-                        {user ? (
+                        {isLoggedIn ? (
                             <Link className={styles.loginBtn} onClick={handleSignOut} to={ROUTE.LOGIN}>
                                 Sign Out
                             </Link>
