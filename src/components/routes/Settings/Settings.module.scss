@@ -1,0 +1,24 @@
+@use "styles/mixins" as *;
+@use "styles/colors" as *;
+
+section.settings {
+    @include app-container();
+    display: flex;
+    justify-content: center;
+
+    .card {
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .avatar {
+        align-self: center;
+        fill: $gold-color;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
