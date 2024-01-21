@@ -1,0 +1,7 @@
+@use "styles/mixins" as *;
+
+.usersList {
+    max-height: 436px;
+    overflow-y: auto;
+    @include styled-scroll-bar();
+}
