@@ -3,10 +3,11 @@ import { IUser } from "src/types";
 import styles from "./UsersList.module.scss";
 
 interface IUsersListProps {
-    users: IUser[];
+    users?: IUser[];
 }
 
 export const UsersList: FC<IUsersListProps> = ({ users }) => {
+    if (!users) return null;
     return (
         <ul className={styles.usersList}>
             {users.map(({ name, username, email, phone }, index) => (
@@ -14,7 +15,9 @@ export const UsersList: FC<IUsersListProps> = ({ users }) => {
                     <table>
                         <thead>
                             <tr>
-                                <th colSpan={2}>User No. {index + 1}</th>
+                                <th align="center" colSpan={2}>
+                                    User No. {index + 1}
+                                </th>
                             </tr>
                         </thead>
                         <tbody>

@@ -13,7 +13,6 @@ interface IUsersListCardProps {
 export const UsersListCard: FC<IUsersListCardProps> = ({ className }) => {
     const { data } = useFetchAllUsers();
 
-    if (!data) return null;
     return (
         <Card className={cn(styles.card, className)}>
             <Card.Body>

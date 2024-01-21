@@ -1,7 +1,32 @@
 @use "styles/mixins" as *;
+@use "styles/colors" as *;
 
 .usersList {
-    max-height: 436px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 430px;
     overflow-y: auto;
     @include styled-scroll-bar();
+
+    table {
+        width: 100%;
+        padding-right: 10px;
+
+        thead {
+            tr {
+                th {
+                    color: $gold-color;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td:first-child {
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
 }
