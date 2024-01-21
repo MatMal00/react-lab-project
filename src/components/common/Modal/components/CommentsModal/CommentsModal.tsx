@@ -11,7 +11,7 @@ interface ICommentsModalProps {
 }
 
 export const CommentsModal: FC<ICommentsModalProps> = ({ postTitle, postId }) => {
-    const commentsState = useFetchComments(postId);
+    const { addComment, removeComment, ...commentsState } = useFetchComments(postId);
     const { user } = useAuth();
 
     return (
@@ -21,8 +21,8 @@ export const CommentsModal: FC<ICommentsModalProps> = ({ postTitle, postId }) =>
             <ActionsHandler<IComment[]> {...commentsState} skeleton={<Skeleton.Comment noOfSkeletons={3} />}>
                 {(comments) => (
                     <>
-                        <CommentsList comments={comments} userId={user?.id} />
-                        {user && <AddCommentForm handleAddComment={() => {}} user={user} postId={postId} />}
+                        <CommentsList comments={comments} userId={user?.id} handleRemoveComment={removeComment} />
+                        {user && <AddCommentForm handleAddComment={addComment} user={user} postId={postId} />}
                     </>
                 )}
             </ActionsHandler>

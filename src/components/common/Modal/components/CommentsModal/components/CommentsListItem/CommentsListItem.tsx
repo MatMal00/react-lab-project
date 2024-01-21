@@ -6,13 +6,14 @@ import { RemoveButton } from "src/components/common/RemoveButton";
 
 interface ICommentsListItemProps extends IComment {
     isRemovable: boolean;
+    remove: (commentId: number) => void;
 }
 
-export const CommentsListItem: FC<ICommentsListItemProps> = ({ email, body, isRemovable }) => {
+export const CommentsListItem: FC<ICommentsListItemProps> = ({ email, body, id, isRemovable, remove }) => {
     return (
         <li>
             <Card className={styles.commentListItem}>
-                <>{isRemovable && <RemoveButton onClick={() => {}} />}</>
+                <>{isRemovable && <RemoveButton onClick={() => remove(id)} />}</>
                 <Card.Body>
                     <h6>{email}</h6>
                     <p>{body}</p>
