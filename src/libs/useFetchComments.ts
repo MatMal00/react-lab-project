@@ -27,7 +27,7 @@ export const useFetchComments = (postId: number) => {
         async (commentId: number) => {
             try {
                 await mutate((comments) => removeCommentAction(commentId, comments), {
-                    optimisticData: (comments) => (comments ?? []).filter((photo) => photo.id !== commentId),
+                    optimisticData: (comments) => (comments ?? []).filter((comment) => comment.id !== commentId),
                     populateCache: true,
                     revalidate: false,
                 });
