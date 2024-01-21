@@ -3,14 +3,14 @@ import { Form, Formik } from "formik";
 import { ReactElement } from "react";
 import { FormikCheckbox } from "../../Formik";
 
-interface IByCurrentUserProps<T extends { userId: number }> {
+interface IByCurrentUserProps<T extends { userId?: number }> {
     data: T[];
     user?: IUser;
     children: (data: T[]) => ReactElement | ReactElement[];
     title: string;
 }
 
-export const ByCurrentUser = <T extends { userId: number }>({
+export const ByCurrentUser = <T extends { userId?: number }>({
     data,
     children,
     user,
