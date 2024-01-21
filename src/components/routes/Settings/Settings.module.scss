@@ -6,19 +6,8 @@ section.settings {
     display: flex;
     justify-content: center;
 
-    .card {
+    .sharedCard {
         max-width: 600px;
         width: 100%;
-    }
-
-    .avatar {
-        align-self: center;
-        fill: $gold-color;
-    }
-
-    .form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
     }
 }
