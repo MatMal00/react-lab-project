@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
-import { ActionsHandler, Skeleton } from "src/components";
+import { ActionsHandler, ByCurrentUser, Skeleton } from "src/components";
 import { useAuth, useFetchAlbum } from "src/libs";
 import { IPhoto } from "src/types";
 import { AddPhotoContainer, AddPhotoForm, PhotosList } from "./components";
@@ -23,7 +23,16 @@ export const Album: FC<IAlbumProps> = () => {
                                 <AddPhotoForm handleAddPhoto={addPhotoToAlbum} albumId={albumId} userId={user.id} />
                             </AddPhotoContainer>
                         )}
-                        <PhotosList photos={photos} handleRemovePhoto={removePhotoFromAlbum} userId={user?.id} />
+
+                        <ByCurrentUser<IPhoto> data={photos} user={user} title="Show my photos">
+                            {(filteredPhotos) => (
+                                <PhotosList
+                                    photos={filteredPhotos}
+                                    handleRemovePhoto={removePhotoFromAlbum}
+                                    userId={user?.id}
+                                />
+                            )}
+                        </ByCurrentUser>
                     </>
                 )}
             </ActionsHandler>

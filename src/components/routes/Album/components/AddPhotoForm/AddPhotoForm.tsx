@@ -23,7 +23,7 @@ export const AddPhotoForm: FC<IAddPhotoFormProps> = ({ albumId, userId, handleAd
                         url: photoUrl,
                         thumbnailUrl: photoUrl,
                         id: getRandomNumber(1000, 10000),
-                        createdById: userId,
+                        userId: userId,
                     };
                     handleAddPhoto(newPhoto);
                     resetForm();

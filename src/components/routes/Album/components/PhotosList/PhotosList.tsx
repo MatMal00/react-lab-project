@@ -17,7 +17,7 @@ export const PhotosList: FC<IPhotosListProps> = ({ photos, userId, handleRemoveP
                     key={photo.id}
                     {...photo}
                     remove={handleRemovePhoto}
-                    isRemovable={!!(userId && photo.createdById === userId)}
+                    isRemovable={!!(userId && photo.userId === userId)}
                 />
             ))}
         </ul>
