@@ -8,23 +8,26 @@ import styles from "./AddPhotoForm.module.scss";
 interface IAddPhotoFormProps {
     handleAddPhoto: (newPhoto: IPhoto) => void;
     userId: number;
+    albumId?: string;
 }
 
-export const AddPhotoForm: FC<IAddPhotoFormProps> = ({ userId, handleAddPhoto }) => {
+export const AddPhotoForm: FC<IAddPhotoFormProps> = ({ albumId, userId, handleAddPhoto }) => {
     return (
         <Formik
             initialValues={{ photoUrl: "", title: "" }}
             onSubmit={({ title, photoUrl }, { resetForm }) => {
-                const newPhoto: IPhoto = {
-                    albumId: 1,
-                    title,
-                    url: photoUrl,
-                    thumbnailUrl: photoUrl,
-                    id: getRandomNumber(1000, 10000),
-                    userId: userId,
-                };
-                handleAddPhoto(newPhoto);
-                resetForm();
+                if (albumId) {
+                    const newPhoto: IPhoto = {
+                        albumId: +albumId,
+                        title,
+                        url: photoUrl,
+                        thumbnailUrl: photoUrl,
+                        id: getRandomNumber(1000, 10000),
+                        createdById: userId,
+                    };
+                    handleAddPhoto(newPhoto);
+                    resetForm();
+                }
             }}
         >
             <Form>

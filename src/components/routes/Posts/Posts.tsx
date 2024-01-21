@@ -2,12 +2,11 @@ import { FC } from "react";
 import { IPost } from "src/types";
 import { useAuth, useFetchPosts } from "src/libs";
 import { ActionsHandler, ByCurrentUser, Skeleton } from "src/components";
-import { AddPostContainer, PostsList } from "./components";
+import { AddPostContainer, AddPostForm, PostsList } from "./components";
 import styles from "./posts.module.scss";
-import { AddPhotoForm } from "../Album/components";
 
 export const Posts: FC = () => {
-    const { ...postsState } = useFetchPosts();
+    const { addPost, ...postsState } = useFetchPosts();
     const { user } = useAuth();
 
     return (
@@ -17,7 +16,7 @@ export const Posts: FC = () => {
                     <>
                         {user && (
                             <AddPostContainer>
-                                <AddPhotoForm userId={user.id} handleAddPhoto={() => {}} />
+                                <AddPostForm userId={user.id} handleAddPost={(newPost) => addPost(newPost)} />
                             </AddPostContainer>
                         )}
                         <ByCurrentUser<IPost> data={posts} user={user} title="Show my posts">

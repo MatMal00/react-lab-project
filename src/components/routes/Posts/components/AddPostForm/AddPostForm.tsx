@@ -11,21 +11,19 @@ interface IAddPostFormProps {
     albumId?: string;
 }
 
-export const AddPostForm: FC<IAddPostFormProps> = ({ albumId, userId, handleAddPost }) => {
+export const AddPostForm: FC<IAddPostFormProps> = ({ userId, handleAddPost }) => {
     return (
         <Formik
             initialValues={{ body: "", title: "" }}
             onSubmit={({ title, body }, { resetForm }) => {
-                if (albumId) {
-                    const newPost: IPost = {
-                        title,
-                        body,
-                        id: getRandomNumber(1000, 10000),
-                        userId,
-                    };
-                    handleAddPost(newPost);
-                    resetForm();
-                }
+                const newPost: IPost = {
+                    title,
+                    body,
+                    id: getRandomNumber(1000, 10000),
+                    userId,
+                };
+                handleAddPost(newPost);
+                resetForm();
             }}
         >
             <Form>
