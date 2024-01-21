@@ -5,9 +5,10 @@ import styles from "./CommentsList.module.scss";
 
 interface ICommentsListProps {
     comments: IComment[];
+    userId?: number;
 }
 
-export const CommentsList: FC<ICommentsListProps> = ({ comments }) => {
+export const CommentsList: FC<ICommentsListProps> = ({ comments, userId }) => {
     const noOfComments = comments.length;
     const commentsTitle = noOfComments === 1 ? "Comment" : "Comments";
 
@@ -18,7 +19,11 @@ export const CommentsList: FC<ICommentsListProps> = ({ comments }) => {
             </h6>
             <ul className={styles.list}>
                 {comments.map((comment) => (
-                    <CommentsListItem key={comment.id} {...comment} />
+                    <CommentsListItem
+                        key={comment.id}
+                        {...comment}
+                        isRemovable={!!(userId && comment.userId === userId)}
+                    />
                 ))}
             </ul>
         </div>
