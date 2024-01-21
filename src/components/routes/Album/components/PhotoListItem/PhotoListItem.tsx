@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { IPhoto } from "src/types";
-import RemoveIcon from "icons/remove.svg?react";
 import styles from "./PhotoListItem.module.scss";
+import { RemoveButton } from "src/components/common";
 
 interface IPhotosListItemProps extends IPhoto {
     isRemovable: boolean;
@@ -10,11 +10,7 @@ interface IPhotosListItemProps extends IPhoto {
 
 export const PhotoListItem: FC<IPhotosListItemProps> = ({ url, isRemovable, remove, id, albumId }) => (
     <li className={styles.photoListItem}>
-        {isRemovable && (
-            <button onClick={() => remove(id, albumId)}>
-                <RemoveIcon />
-            </button>
-        )}
+        {isRemovable && <RemoveButton onClick={() => remove(id, albumId)} />}
         <img src={url}></img>
     </li>
 );
