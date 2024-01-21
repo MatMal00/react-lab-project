@@ -12,8 +12,8 @@ export const UsersList: FC<IUsersListProps> = ({ users }) => {
             {!users?.length ? (
                 <p>No results</p>
             ) : (
-                users.map(({ name, username, email, phone }, index) => (
-                    <li>
+                users.map(({ name, username, email, phone, id }, index) => (
+                    <li key={id}>
                         <table>
                             <thead>
                                 <tr>
