@@ -7,9 +7,15 @@ interface IByCurrentUserProps<T extends { userId: number }> {
     data: T[];
     user?: IUser;
     children: (data: T[]) => ReactElement | ReactElement[];
+    title: string;
 }
 
-export const ByCurrentUser = <T extends { userId: number }>({ data, children, user }: IByCurrentUserProps<T>) => {
+export const ByCurrentUser = <T extends { userId: number }>({
+    data,
+    children,
+    user,
+    title,
+}: IByCurrentUserProps<T>) => {
     if (user) {
         return (
             <Formik initialValues={{ isChecked: false }} onSubmit={() => {}}>
@@ -18,7 +24,7 @@ export const ByCurrentUser = <T extends { userId: number }>({ data, children, us
 
                     return (
                         <Form>
-                            <FormikCheckbox name="isChecked" label="My posts" />
+                            <FormikCheckbox name="isChecked" label={title} />
                             {children(filteredData)}
                         </Form>
                     );
