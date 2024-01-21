@@ -4,6 +4,8 @@
 @use "styles/mixins" as *;
 
 .card {
+    position: relative;
+
     svg {
         fill: $gold-color;
     }

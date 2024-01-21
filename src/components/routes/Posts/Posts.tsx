@@ -6,7 +6,7 @@ import { AddPostContainer, AddPostForm, PostsList } from "./components";
 import styles from "./posts.module.scss";
 
 export const Posts: FC = () => {
-    const { addPost, ...postsState } = useFetchPosts();
+    const { addPost, removePost, ...postsState } = useFetchPosts();
     const { user } = useAuth();
 
     return (
@@ -20,7 +20,9 @@ export const Posts: FC = () => {
                             </AddPostContainer>
                         )}
                         <ByCurrentUser<IPost> data={posts} user={user} title="Show my posts">
-                            {(filteredPosts) => <PostsList posts={filteredPosts} />}
+                            {(filteredPosts) => (
+                                <PostsList userId={user?.id} posts={filteredPosts} handleRemovePost={removePost} />
+                            )}
                         </ByCurrentUser>
                     </>
                 )}
