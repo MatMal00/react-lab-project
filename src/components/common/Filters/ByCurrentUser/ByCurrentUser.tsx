@@ -1,6 +1,7 @@
 import { IUser } from "src/types";
 import { Form, Formik } from "formik";
 import { ReactElement } from "react";
+import { FormikCheckbox } from "../../Formik";
 
 interface IByCurrentUserProps<T extends { userId: number }> {
     data: T[];
@@ -17,7 +18,7 @@ export const ByCurrentUser = <T extends { userId: number }>({ data, children, us
 
                     return (
                         <Form>
-                            <div></div>
+                            <FormikCheckbox name="isChecked" label="My posts" />
                             {children(filteredData)}
                         </Form>
                     );
