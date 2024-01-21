@@ -17,13 +17,17 @@ export const UsersListCard: FC<IUsersListCardProps> = ({ className }) => {
         <Card className={cn(styles.card, className)}>
             <Card.Body>
                 <Formik initialValues={{ search: "" }} onSubmit={() => {}} enableReinitialize>
-                    {() => {
+                    {({ values: { search } }) => {
+                        const filteredUsers = data?.filter(({ name }) =>
+                            name.toLowerCase().includes(search.toLowerCase())
+                        );
+
                         return (
                             <>
                                 <Form className={styles.form}>
                                     <FormikInput name="search" label="Search" />
                                 </Form>
-                                <UsersList users={data} />
+                                <UsersList users={filteredUsers} />
                             </>
                         );
                     }}

@@ -9,6 +9,10 @@
     overflow-y: auto;
     @include styled-scroll-bar();
 
+    p {
+        text-align: center;
+    }
+
     table {
         width: 100%;
         padding-right: 10px;
