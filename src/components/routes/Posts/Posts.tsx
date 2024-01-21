@@ -13,7 +13,7 @@ export const Posts: FC = () => {
         <section className={styles.posts}>
             <ActionsHandler<IPost[]> {...postsState} skeleton={<Skeleton.Post noOfSkeletons={9} />}>
                 {(posts) => (
-                    <ByCurrentUser<IPost> data={posts} user={user}>
+                    <ByCurrentUser<IPost> data={posts} user={user} title="Show my posts">
                         {(filteredPosts) => <PostsList posts={filteredPosts} />}
                     </ByCurrentUser>
                 )}
