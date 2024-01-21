@@ -1,24 +1,29 @@
 @use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
 @use "styles/colors" as *;
 
 section.settings {
     @include app-container();
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 
-    .card {
+    @include tablet-landscape-up() {
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .sharedCard {
         max-width: 600px;
         width: 100%;
-    }
+        height: auto;
 
-    .avatar {
-        align-self: center;
-        fill: $gold-color;
-    }
-
-    .form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        @include tablet-landscape-up() {
+            flex: 1;
+            min-width: 300px;
+        }
     }
 }
