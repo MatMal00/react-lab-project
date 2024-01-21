@@ -1,5 +1,5 @@
 import SWR from "swr";
-import { fetcher } from "src/actions";
+import { addCommentAction, fetcher, removeCommentAction } from "src/actions";
 import { IComment } from "src/types";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
@@ -15,9 +15,9 @@ export const useFetchComments = (postId: number) => {
                     populateCache: true,
                     revalidate: false,
                 });
-                toast.success("Successfully added the photo");
+                toast.success("Successfully added comment");
             } catch {
-                toast.error("Failed to add photo");
+                toast.error("Failed to add comment");
             }
         },
         [postId, mutate]
@@ -31,9 +31,9 @@ export const useFetchComments = (postId: number) => {
                     populateCache: true,
                     revalidate: false,
                 });
-                toast.success("Successfully removed the photo");
+                toast.success("Successfully removed comment");
             } catch {
-                toast.error("Failed to removed photo");
+                toast.error("Failed to removed comment");
             }
         },
         [mutate]
