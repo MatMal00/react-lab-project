@@ -1,5 +1,6 @@
 @use "styles/colors" as *;
 @use "styles/mixins" as *;
+@use "styles/breakpoints" as *;
 
 .commentsList {
     display: flex;
@@ -21,8 +22,7 @@
     left: -20px;
     color: $white-color;
     overflow-y: auto;
-    max-height: 380px;
-
+    max-height: 250px;
     @include styled-scroll-bar();
 
     &Skeleton {
