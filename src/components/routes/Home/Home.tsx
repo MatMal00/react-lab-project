@@ -1,6 +1,6 @@
 import { FC } from "react";
+import { HeroSection } from "./components";
 import styles from "./Home.module.scss";
-import { HeroSection } from "./components/HeroSection";
 
 export const Home: FC = () => {
     return (
