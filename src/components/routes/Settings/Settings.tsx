@@ -7,8 +7,10 @@ interface ISettingsProps {}
 export const Settings: FC<ISettingsProps> = () => {
     return (
         <section className={styles.settings}>
-            <UserInfoCard className={styles.sharedCard} />
-            <UsersListCard className={styles.sharedCard} />
+            <div className={styles.wrapper}>
+                <UserInfoCard className={styles.sharedCard} />
+                <UsersListCard className={styles.sharedCard} />
+            </div>
         </section>
     );
 };
