@@ -4,9 +4,11 @@
 @mixin app-container {
     margin: 0 auto;
     padding: 14px;
+    min-height: calc(100vh - 194px);
 
     @include tablet-portrait-up() {
         padding: 20px;
+        min-height: calc(100vh - 196px);
     }
 
     @include tablet-landscape-up() {

@@ -3,7 +3,7 @@
 @use "styles/variables" as *;
 @use "styles/breakpoints" as *;
 
-$navbar-height-mobile: 60px;
+$navbar-height-mobile: 52px;
 
 .navbar {
     padding-bottom: calc($navbar-height-mobile + $navbar-padding-bottom);
