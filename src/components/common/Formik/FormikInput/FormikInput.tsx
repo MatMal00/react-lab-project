@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FocusEvent, InputHTMLAttributes, forwardRef, useEffect, useRef } from "react";
 import { useField } from "formik";
-// import cn from "classnames";
 import styles from "./FormikInput.module.scss";
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "onBlur" | "onChange">;
@@ -10,7 +9,6 @@ export interface IFormikInputProps extends HTMLInputProps {
     label?: string;
     onBlur?: (event: FocusEvent<HTMLInputElement>, fieldValue: string, fieldName: string) => void;
     onChange?: (event: ChangeEvent<HTMLInputElement>, fieldValue: string, fieldName: string) => void;
-    setIsFocused?: (isFocused: boolean) => void;
     inputStyle?: "default" | "secondary";
     ref?: React.Ref<HTMLInputElement>;
     disabled?: boolean;
@@ -23,9 +21,7 @@ export const FormikInput = forwardRef<HTMLInputElement, IFormikInputProps>(
             label,
             onBlur,
             onChange,
-            setIsFocused,
             type = "text",
-            // inputStyle = "default",
             disabled,
             focusOnInit, // It works only if a custom ref has not been passed
             ...props
@@ -39,16 +35,11 @@ export const FormikInput = forwardRef<HTMLInputElement, IFormikInputProps>(
         const handleOnBlurAction = (event: FocusEvent<HTMLInputElement>) => {
             field.onBlur(event);
             onBlur?.(event, fieldValue, fieldName);
-            setIsFocused?.(false);
         };
 
         const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
             field.onChange(event);
             onChange?.(event, fieldValue, fieldName);
-        };
-
-        const handleOnFocus = () => {
-            setIsFocused?.(true);
         };
 
         useEffect(() => {
@@ -62,7 +53,6 @@ export const FormikInput = forwardRef<HTMLInputElement, IFormikInputProps>(
                     {...field}
                     {...props}
                     type={type}
-                    onFocus={handleOnFocus}
                     onChange={handleOnChange}
                     onBlur={handleOnBlurAction}
                     disabled={disabled}
