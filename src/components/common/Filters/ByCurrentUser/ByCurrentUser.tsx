@@ -16,7 +16,7 @@ export const ByCurrentUser = <T extends { userId?: number }>({
     user,
     title,
 }: IByCurrentUserProps<T>) => {
-    if (user) {
+    if (user && data.length) {
         return (
             <Formik initialValues={{ isChecked: false }} onSubmit={() => {}}>
                 {({ values: { isChecked } }) => {
