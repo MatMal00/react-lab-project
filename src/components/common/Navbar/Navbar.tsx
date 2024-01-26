@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import { NavLink as Link } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
+import { NavLink as Link, useLocation } from "react-router-dom";
 import { ROUTE } from "src/constants";
 import { Hamburger, NavLink } from "./components";
 import { useAuth } from "src/libs";
@@ -13,9 +13,14 @@ interface INavbarProps {}
 export const Navbar: FC<INavbarProps> = () => {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
     const { logout, isLoggedIn } = useAuth();
+    const { pathname } = useLocation();
 
-    const handleOpenNavbar = () => setIsNavbarOpen(!isNavbarOpen);
+    const handleToggleNavbar = () => setIsNavbarOpen(!isNavbarOpen);
     const handleSignOut = () => logout();
+
+    useEffect(() => {
+        setIsNavbarOpen(false);
+    }, [pathname]);
 
     return (
         <nav className={styles.navbar}>
@@ -53,7 +58,7 @@ export const Navbar: FC<INavbarProps> = () => {
                         )}
                     </li>
                 </ul>
-                <Hamburger handleOpen={handleOpenNavbar} isOpen={isNavbarOpen} />
+                <Hamburger handleOpen={handleToggleNavbar} isOpen={isNavbarOpen} />
             </div>
         </nav>
     );
