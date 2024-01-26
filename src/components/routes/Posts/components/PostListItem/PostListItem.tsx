@@ -1,13 +1,17 @@
 import { FC, useState } from "react";
 import { IPost } from "src/types";
-import { Avatar, Card, Modal } from "src/components";
+import { Avatar, Card, Modal, RemoveButton } from "src/components";
 import ManAvatarIcon from "icons/man-avatar.svg?react";
 import CommentsIcon from "icons/comments.svg?react";
+import cn from "classnames";
 import styles from "./PostListItem.module.scss";
 
-interface IPostListItemProps extends IPost {}
+interface IPostListItemProps extends IPost {
+    isRemovable: boolean;
+    remove: (postId: number) => void;
+}
 
-export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId, id }) => {
+export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId, id, isRemovable, remove }) => {
     const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false);
     const [isCommentsModalOpen, setIsCommentsModalOpen] = useState(false);
 
@@ -16,7 +20,8 @@ export const PostListItem: FC<IPostListItemProps> = ({ title, body, userId, id }
 
     return (
         <li>
-            <Card className={styles.card}>
+            <Card className={cn(styles.card)}>
+                <>{isRemovable && <RemoveButton onClick={() => remove(id)} />}</>
                 <Card.Body>
                     <Avatar className={styles.avatar} onClick={handleToggleUserInfoModal}>
                         <ManAvatarIcon />

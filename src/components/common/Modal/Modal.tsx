@@ -1,10 +1,10 @@
 import { FC, MouseEvent, ReactElement, useEffect } from "react";
-import { UserInfoModal, CommentsModal } from "./components";
+import { UserInfoModal, CommentsModal, AddPhotoModal } from "./components";
 import { Portal } from "../Portal";
+import { useLockScrollY } from "src/hooks";
 import CrossIcon from "icons/cross.svg?react";
 import cn from "classnames";
 import styles from "./Modal.module.scss";
-import { useLockScrollY } from "src/hooks";
 
 interface IModalProps {
     isOpen: boolean;
@@ -16,6 +16,7 @@ interface IModalProps {
 interface IModalComponent extends FC<IModalProps> {
     UserInfo: typeof UserInfoModal;
     Comments: typeof CommentsModal;
+    AddPhoto: typeof AddPhotoModal;
 }
 
 export const Modal: IModalComponent = ({ isOpen, handleClose, children, className }) => {
@@ -52,3 +53,4 @@ export const Modal: IModalComponent = ({ isOpen, handleClose, children, classNam
 
 Modal.UserInfo = UserInfoModal;
 Modal.Comments = CommentsModal;
+Modal.AddPhoto = AddPhotoModal;

@@ -1,19 +1,20 @@
 import { FC, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 import { ROUTE } from "src/constants";
-import styles from "./Navbar.module.scss";
-import AppLogoIcon from "icons/app-logo.svg?react";
-import { NavLink } from "./components/NavLink";
+import { Hamburger, NavLink } from "./components";
 import { useAuth } from "src/libs";
+import AppLogoIcon from "icons/app-logo.svg?react";
+import SettingsIcon from "icons/settings.svg?react";
+import cn from "classnames";
+import styles from "./Navbar.module.scss";
 
 interface INavbarProps {}
 
 export const Navbar: FC<INavbarProps> = () => {
-    const [activeLink, setActiveLink] = useState("");
-    const [navbarOpen, setNavbarOpen] = useState(false);
-    const { logout, user } = useAuth();
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    const { logout, isLoggedIn } = useAuth();
 
-    const openNavbar = () => setNavbarOpen(!navbarOpen);
+    const handleOpenNavbar = () => setIsNavbarOpen(!isNavbarOpen);
     const handleSignOut = () => logout();
 
     return (
@@ -25,31 +26,23 @@ export const Navbar: FC<INavbarProps> = () => {
                     </Link>
                 </h1>
 
-                <ul className={`${styles.links} ${navbarOpen ? styles.linksOpen : ""}`}>
-                    <NavLink
-                        dataName={"home"}
-                        activeLink={activeLink}
-                        to={ROUTE.HOME}
-                        children={"Home"}
-                        setActiveLink={setActiveLink}
-                    ></NavLink>
-                    <NavLink
-                        dataName={"posts"}
-                        activeLink={activeLink}
-                        to={ROUTE.POSTS}
-                        children={"Posts"}
-                        setActiveLink={setActiveLink}
-                    ></NavLink>
-                    <NavLink
-                        dataName={"albums"}
-                        activeLink={activeLink}
-                        to={ROUTE.ALBUMS}
-                        children={"Albums"}
-                        setActiveLink={setActiveLink}
-                    ></NavLink>
+                <ul className={cn(styles.links, { [styles.linksOpen]: isNavbarOpen })}>
+                    <NavLink to={ROUTE.HOME}>Home</NavLink>
+                    <NavLink to={ROUTE.POSTS}>Posts</NavLink>
+                    <NavLink to={ROUTE.ALBUMS}>Albums</NavLink>
 
+                    {isLoggedIn && (
+                        <Link
+                            className={({ isActive }) =>
+                                cn(styles.settingsBtn, { [styles.settingsBtnActive]: isActive })
+                            }
+                            to={ROUTE.SETTINGS}
+                        >
+                            <SettingsIcon style={{ marginRight: "5px" }}></SettingsIcon>
+                        </Link>
+                    )}
                     <li className={styles.list}>
-                        {user ? (
+                        {isLoggedIn ? (
                             <Link className={styles.loginBtn} onClick={handleSignOut} to={ROUTE.LOGIN}>
                                 Sign Out
                             </Link>
@@ -60,12 +53,7 @@ export const Navbar: FC<INavbarProps> = () => {
                         )}
                     </li>
                 </ul>
-
-                <div className={styles.hamburger} onClick={openNavbar}>
-                    <div className={`${styles.hamburgerLine} ${navbarOpen ? styles.hamburgerLineOpen : ""}`}></div>
-                    <div className={`${styles.hamburgerLine} ${navbarOpen ? styles.hamburgerLineOpen : ""}`}></div>
-                    <div className={`${styles.hamburgerLine} ${navbarOpen ? styles.hamburgerLineOpen : ""}`}></div>
-                </div>
+                <Hamburger handleOpen={handleOpenNavbar} isOpen={isNavbarOpen} />
             </div>
         </nav>
     );

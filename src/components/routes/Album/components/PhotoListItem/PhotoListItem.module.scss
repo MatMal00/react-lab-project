@@ -1,4 +1,7 @@
+@use "styles/colors" as *;
+
 .photoListItem {
+    position: relative;
     flex-basis: 350px;
 
     img {

@@ -1,0 +1,14 @@
+@use "styles/colors" as *;
+
+.card {
+    .avatar {
+        align-self: center;
+        fill: $gold-color;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}

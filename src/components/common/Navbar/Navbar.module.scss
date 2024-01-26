@@ -42,35 +42,11 @@ div.content {
     color: $white-color;
     padding: 5px 25px;
     transition: 0.3s;
+    white-space: nowrap;
     cursor: pointer;
 
     &:hover {
         background-color: darken($gold-color, 10%);
-    }
-}
-
-.hamburger {
-    cursor: pointer;
-
-    &Line {
-        width: 30px;
-        height: 4px;
-        background-color: $backgroud-color;
-        margin: 5px;
-        border-radius: 20px;
-        transition: 0.4s;
-
-        &Open:first-child {
-            transform: rotate(-45deg) translate(-9px, 3px);
-        }
-
-        &Open:nth-child(2) {
-            opacity: 0;
-        }
-
-        &Open:last-child {
-            transform: rotate(45deg) translate(-10px, -3px);
-        }
     }
 }
 
@@ -99,6 +75,23 @@ div.content {
     padding: 15px;
 }
 
+.settingsBtn {
+    align-self: center;
+
+    &Active {
+        svg {
+            fill: $gold-color;
+        }
+    }
+
+    svg {
+        transition: fill 0.3s;
+        &:hover {
+            fill: $gold-color;
+        }
+    }
+}
+
 @include tablet-narrow-up {
     .links {
         flex-direction: row;
@@ -116,12 +109,19 @@ div.content {
         }
     }
 
-    .hamburger {
-        display: none;
-    }
-
     .list {
         display: block;
         padding: 10px;
+    }
+    .settingsBtn {
+        display: flex;
+        justify-content: center;
+        padding: 5px 10px;
+    }
+}
+
+@include tablet-landscape-up {
+    .settingsBtn {
+        padding: 5px 25px;
     }
 }

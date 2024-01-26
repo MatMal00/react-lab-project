@@ -4,13 +4,21 @@
 @use "styles/mixins" as *;
 
 .card {
+    position: relative;
+
     svg {
         fill: $gold-color;
     }
 }
 
 .avatar {
+    height: 40px;
     align-self: center;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .textBox {
