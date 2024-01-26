@@ -1,0 +1,23 @@
+@use "styles/colors" as *;
+
+.heroContainer {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}
+
+.heroHeader {
+    font-size: 5rem;
+    color: $white-color;
+    margin-top: -100px;
+}
+
+.heroDesc {
+    font-size: 2rem;
+    color: $white-color;
+}
