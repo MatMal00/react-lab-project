@@ -3,6 +3,7 @@ import { useAuth } from "src/libs";
 import { Form, Formik, FormikErrors } from "formik";
 import { FormikInput } from "src/components";
 import styles from "./LoginBoxForm.module.scss";
+import toast from "react-hot-toast";
 
 interface FormErrors {
     email?: string;
@@ -26,14 +27,18 @@ export const LoginBoxForm: FC = () => {
 
         if (!email) {
             newErrors.email = "Email is required";
+            toast.error("Email is required");
         } else if (!/\S+@\S+\.\S+/.test(email)) {
             newErrors.email = "Email address is invalid";
+            toast.error("Email address is invalid");
         }
 
         if (!password) {
             newErrors.password = "Password is required";
+            toast.error("Password is required");
         } else if (password.length < 6) {
             newErrors.password = "Password must be at least 6 characters";
+            toast.error("Password must be at least 6 characters");
         }
 
         setErrors(newErrors);
