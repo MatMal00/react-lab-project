@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 
-// Define a generic type for ActionsHandler
 interface ActionsHandlerProps<T> {
     isLoading: boolean;
     error?: string;
